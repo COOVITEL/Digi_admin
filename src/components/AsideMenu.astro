@@ -1,0 +1,37 @@
+---
+import SideMenuItem from "./SideMenuItem.astro";
+import HomeIcon from "@/icons/Home.astro"
+import Statitics from "@/icons/Statistics.astro"
+import Graffics from "@/icons/Graffics.astro"
+import Turns from "@/icons/Turns.astro"
+import Download from "@/icons/Download.astro"
+
+---
+<nav class="flex flex-col flex-1 gap-2">
+    <div class="bg-zinc-800 p-5">
+        <SideMenuItem href="/">
+            <HomeIcon />
+             Inicio
+          </SideMenuItem>
+
+          <SideMenuItem href="/statistics">
+            <Statitics />
+             Estadisticas
+          </SideMenuItem>
+
+          <SideMenuItem href="/graffics">
+            <Graffics />
+             Graficos
+          </SideMenuItem>
+
+          <SideMenuItem href="/qualitifingTurns">
+            <Turns />
+            Turnos por Calificar
+          </SideMenuItem>
+
+          <SideMenuItem href="/">
+            <Download />
+            Descargar Datos
+          </SideMenuItem>
+    </div>
+</nav>
