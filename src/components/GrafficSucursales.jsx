@@ -1,20 +1,9 @@
-import { getAllTurns } from '@/pages/api/turns';
-import { useEffect, useState } from 'react';
 import BarChart from './BarChart';
 import { TrunsDates } from '@/pages/api/dates';
+import { Bar } from "react-chartjs-2"
 
 export default function Graffic () {
 
-/*    const [turns, setTurns] = useState()
-    useEffect(() => {
-        async function loadTurns() {
-            const res = await getAllTurns()
-            setTurns(res.data)
-        }
-        console.log(turns)
-        loadTurns()
-    }, [])
-*/
     const turnsTotal = TrunsDates.length
     const turnsBogota = TrunsDates.filter(turn => turn.city === "Bogotá").length
     const turnsTunja = TrunsDates.filter(turn => turn.city === "Tunja").length
@@ -38,12 +27,9 @@ export default function Graffic () {
         }]
       };
     return (
-    <div className="flex flex-row m-6 justify-around items-center">
-        <div className='flex w-[400px]'>
-            <BarChart chartData={data}/>
-        </div>
-        <h5 className='text-white w-[250px]'>Podras encontrar diferentes tablas de comparacion de los datos obtenidos en el digiturno</h5>
-    </div>
+        <div className="flex items-center border-2 p-5 rounded-lg w-[400px]">
+            <Bar data={data}/>
+      </div>
         )
 };
 

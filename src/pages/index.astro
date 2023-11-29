@@ -1,5 +1,7 @@
 ---
-import Graffic from '@/components/Graffics';
+import Graffic from '@/components/GrafficSucursales';
+import GrafficTypes from '@/components/GrafficTypes'
+import AllTime from '@/components/GrafficTime'
 import Layout from '../layouts/Layout.astro';
 
 ---
@@ -7,9 +9,11 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Admin Digiturno">
     <div class="flex flex-col p-5">
         <h1 class="text-white text-2xl">Administrable Digiturno, Bienvenido!</h1>
-        <Graffic
-            client:load
-        />
+        <div class="flex flex-wrap gap-5 m-6">
+            <Graffic client:load />
+            <GrafficTypes client:load />
+            <AllTime client:load />
+        </div>
     </div>
 </Layout>
 
