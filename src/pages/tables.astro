@@ -1,11 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { GridExample } from '@/components/tables/types'
 ---
 
 <Layout title="Estadisticas Digiturno">
-    <div class="flex flex-1 p-5">
-        <h1 class="text-white text-2xl">Tablas de Datos Digiturno</h1>
-        <div>
+    <div class="flex flex-col p-5">
+        <h1 class="text-white text-2xl pb-2">Tablas de Datos Digiturno</h1>
+        <div class="h-[600px]">
+            <GridExample client:load/>
         </div>
     </div>
 </Layout>
