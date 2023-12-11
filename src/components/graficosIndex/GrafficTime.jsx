@@ -1,9 +1,10 @@
-import { TrunsDates } from "@/pages/api/dates";
+import { TunrsDates } from "@/pages/api/dates";
 import { Line } from "react-chartjs-2"
+import { options } from "../options";
 
 export default function AllTime() {
 
-    const days = TrunsDates.reduce((acc, cur) => {
+    const days = TunrsDates.reduce((acc, cur) => {
         if(acc[cur.date]) {
             acc[cur.date]++
         } else {
@@ -26,8 +27,9 @@ export default function AllTime() {
     };
 
     return (
-        <div className="border-2 p-5 rounded-lg w-[450px]">
-            <Line data={datas} />
+        <div className="flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[450px] h-[300px]">
+            <h4 className='text-white'>Cronología de Numero de Turnos</h4>
+            <Line data={datas} options={options}/>
         </div>
     )
 }
