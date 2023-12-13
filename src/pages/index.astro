@@ -5,18 +5,17 @@ import AllTime from '@/components/graficosIndex/GrafficTime'
 import Layout from '../layouts/Layout.astro';
 import GrafficScores from '@/components/graficosIndex/GrafficScores';
 import GrafficTypesScores from '@/components/graficosIndex/GrafficTypesScores';
-
 ---
 
 <Layout title="Admin Digiturno">
     <div class="flex flex-col p-5">
         <h1 class="text-white text-2xl">Datos y Estadisticas DigiTurno, Bienvenido!</h1>
         <div class="flex flex-wrap gap-5 m-6">
-            <Graffic client:load />
-            <GrafficTypes client:load />
-            <GrafficScores client:load />
-            <AllTime client:load />
-            <GrafficTypesScores client:load />
+            <Graffic client:only />
+            <GrafficTypes client:only />
+            <GrafficScores client:only />
+            <AllTime client:only />
+            <GrafficTypesScores client:only />
         </div>
     </div>
 </Layout>

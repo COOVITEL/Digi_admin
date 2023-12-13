@@ -1,6 +1,9 @@
+import { Chart as ChartJS, CategoryScale, LineElement, PointElement, ArcElement, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import { TunrsDates } from "@/pages/api/dates";
 import { Line } from "react-chartjs-2"
 import { options } from "../options";
+
+ChartJS.register(CategoryScale, LineElement, PointElement, ArcElement, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export default function AllTime() {
 

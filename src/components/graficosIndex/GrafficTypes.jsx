@@ -1,6 +1,9 @@
+import { Chart as ChartJS, CategoryScale, PointElement, ArcElement, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import { TunrsDates } from "@/pages/api/dates";
 import { Bar } from "react-chartjs-2"
 import { options } from "../options";
+
+ChartJS.register(CategoryScale, PointElement, ArcElement, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export default function GrafficTypes() {
     const caj = TunrsDates.filter((type) => type.type2 === "Caja").length
@@ -41,7 +44,7 @@ export default function GrafficTypes() {
     }
 
     return (
-        <div className="flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[600px] h-[300px]">
+        <div className="flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[520px] h-[300px]">
             <h4 className='text-white'>Tipos de Turnos Tomados en las Sucursales</h4>
             <Bar data={data} options={options}/>
         </div>
