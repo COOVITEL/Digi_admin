@@ -2,26 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 import Types from '@/components/graficos/types'
 import { TunrsDates } from './api/dates';
+import Navbuttons from '@/components/graficos/navList';
 
 const sucursales = TunrsDates.map((city) => city.city)
 const uniqueSuc = [...new Set(sucursales)]
 ---
 
 <Layout title="Estadisticas Digiturno">
-    <div class="flex flex-1 flex-col p-5">
-        <h1 class="text-white text-2xl">Graficos Digiturno</h1>
-        <div class="flex flex-col items-center">
-            <nav class="p-5">
-                <ul class="flex flex-row gap-10 text-white">
-                    <li><a href="">Todas</a></li>
-                    {uniqueSuc.map(suc => (
-                        <li><a href={`/graffics/${suc}`}>{suc}</a></li>
-                        ))}
-                </ul>
-            </nav>
-            <Types name=name client:only/>      
-        </div>
-    </div>
+    <Navbuttons client:load/>
  </Layout>
  
 
