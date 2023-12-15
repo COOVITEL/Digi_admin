@@ -16,14 +16,6 @@ export default function Types({ name, time }) {
     const [porcentajes, setPorcentajes] = useState(types.map((type) => ((counts[type] / TunrsDates.length) * 100).toFixed(2)))
     const [title, setTitle] = useState("Todas las Sucursales")
 
-    const filterDates = (month, city = "all") => {
-        let newDates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) === month);
-        if (city !== "all") {
-            newDates = newDates.filter((turn) => turn.city === city);
-        }
-        return newDates;
-    }
-
     useEffect(() => {
         const date = new Date()
         let newMonth = date.getMonth() + 1;
