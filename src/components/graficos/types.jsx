@@ -16,41 +16,35 @@ export default function Types({ name, time }) {
     const [porcentajes, setPorcentajes] = useState(types.map((type) => ((counts[type] / TunrsDates.length) * 100).toFixed(2)))
     const [title, setTitle] = useState("Todas las Sucursales")
 
+    const filterDates = (month, city = "all") => {
+        let newDates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) === month);
+        if (city !== "all") {
+            newDates = newDates.filter((turn) => turn.city === city);
+        }
+        return newDates;
+    }
+
     useEffect(() => {
         const date = new Date()
         let newMonth = date.getMonth() + 1;
         let newDates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) === newMonth);
      
-        if (name == "all" && time === 0) {
-            newMonth = date.getMonth() + 1;
+        if (name == "all") {
+            newMonth = time === 0 ? date.getMonth() + 1 : date.getMonth();
             newDates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) === newMonth);
+            if (time === 2) {
+                newMonth = date.getMonth() - 1;
+                newDates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) >= newMonth)
+            }
             setTitle("Todas las Sucursales");
         }
-        if (name == "all" && time === 1) {
-            newMonth = date.getMonth();
-            newDates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) === newMonth);
-            setTitle("Todas las Sucursales");
-
-        }
-        if (name == "all" && time === 2) {
-            newMonth = date.getMonth() - 1;
-            newDates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) >= newMonth)
-            setTitle("Todas las Sucursales");
-        }
-        if (name != "all" && time === 0) {
-            newMonth = date.getMonth() + 1;
+        if (name != "all") {
+            newMonth = time === 0 ? date.getMonth() + 1 : date.getMonth();
             newDates = TunrsDates.filter((turn) => turn.city == name && Number(turn.date.split("-")[1]) === newMonth)
-            setTitle(name);
-        }
-        if (name != "all" && time === 1) {
-            newMonth = date.getMonth();
-            newDates = TunrsDates.filter((turn) => turn.city == name && Number(turn.date.split("-")[1]) === newMonth)
-            setTitle(name);
-
-        }
-        if (name != "all" && time === 2) {
-            newMonth = date.getMonth() - 1;
-            newDates = TunrsDates.filter((turn) => turn.city == name && Number(turn.date.split("-")[1]) >= newMonth)
+            if (time === 2) {
+                newMonth = date.getMonth() - 1;
+                newDates = TunrsDates.filter((turn) => turn.city == name && Number(turn.date.split("-")[1]) >= newMonth)
+            }
             setTitle(name);
         }
     
@@ -93,7 +87,6 @@ export default function Types({ name, time }) {
                 borderWidth: 2,
             }],
     }
-
 
     return (
         <div className="flex flex-col justify-center items-center border-2 p-5 mt-28 rounded-lg w-[65%] h-auto">
