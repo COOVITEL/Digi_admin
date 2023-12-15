@@ -98,8 +98,6 @@ export default function Types({ name, time }) {
     return (
         <div className="flex flex-col justify-center items-center border-2 p-5 mt-28 rounded-lg w-[65%] h-auto">
             <h4 className='text-white'>Tipos de Turnos Tomados en {title}</h4>
-            <h5 className='text-white'>{time}</h5>
-            <h5 className='text-white'>{name}</h5>
             <Bar data={data} options={options}/>
             <table className='text-white mt-8'>
                 <tr>
