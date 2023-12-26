@@ -18,14 +18,14 @@ export default function Graffic () {
           label: 'Turnos Sucursal',
           data: [turnsBogota, turnsTunja, turnsTotal],
           backgroundColor: [
-            'rgba(255, 99, 132, 0.5)',
-            'rgba(255, 159, 64, 0.5)',
-            'rgba(201, 203, 207, 0.5)'
+            'rgba(228, 65, 53, 0.5)',
+            'rgba(141, 90, 204, 0.5)',
+            'rgba(121, 151, 227, 0.5)'
           ],
           borderColor: [
-            'rgb(255, 99, 132)',
-            'rgb(255, 159, 64)',
-            'rgb(255, 205, 86)',
+            'rgba(228, 65, 53)',
+            'rgba(141, 90, 204)',
+            'rgba(121, 151, 227)',
           ],
           borderWidth: 2,
           hoverOffset: 5

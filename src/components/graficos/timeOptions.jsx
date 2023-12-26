@@ -6,11 +6,12 @@ import { useEffect, useState } from 'react';
 
 ChartJS.register(CategoryScale, PointElement, ArcElement, LinearScale, BarElement, Title, Tooltip, Legend);
 
-export default function Types({ name, time }) {
+export default function TimeOptions({name, time}) {
+    const asesores = TunrsDates.map((turn) => turn.adviser)
+    const uniqueAsesor = [...new Set(asesores)]
 
-    const types = ["Caja", "Crédito", "Afiliación", "Ahorro", "Seguros", "Auxilios", "Estado", "Otros"]
-    const [counts, setCount] = useState(types.reduce((acc, type) => {
-        acc[type] = TunrsDates.filter((turn) => turn.type2 === type).length
+    const [counts, setCount] = useState(uniqueAsesor.reduce((acc, type) => {
+        acc[type] = TunrsDates.filter((turn) => turn.adviser === type).length
         return acc
     }, {}))
     const [porcentajes, setPorcentajes] = useState(types.map((type) => ((counts[type] / TunrsDates.length) * 100).toFixed(2)))
@@ -18,30 +19,22 @@ export default function Types({ name, time }) {
 
     useEffect(() => {
         const date = new Date()
-        let newMonth = date.getMonth() + 1;
+        let newMonth = time === 0 ? date.getMonth() + 1 : date.getMonth();
         let newDates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) === newMonth);
-     
+        if (time === 2) {
+            newMonth = date.getMonth() - 1;
+            newDates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) >= newMonth)
+        }
         if (name == "all") {
-            newMonth = time === 0 ? date.getMonth() + 1 : date.getMonth();
-            newDates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) === newMonth);
-            if (time === 2) {
-                newMonth = date.getMonth() - 1;
-                newDates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) >= newMonth)
-            }
             setTitle("Todas las Sucursales");
         }
         if (name != "all") {
-            newMonth = time === 0 ? date.getMonth() + 1 : date.getMonth();
-            newDates = TunrsDates.filter((turn) => turn.city == name && Number(turn.date.split("-")[1]) === newMonth)
-            if (time === 2) {
-                newMonth = date.getMonth() - 1;
-                newDates = TunrsDates.filter((turn) => turn.city == name && Number(turn.date.split("-")[1]) >= newMonth)
-            }
+            newDates = newDates.filter((turn) => turn.city === name)
             setTitle(name);
         }
     
         const counts = types.reduce((acc, type) => {
-            acc[type] = newDates.filter((turn) => turn.type2 === type).length
+            acc[type] = newDates.filter((turn) => turn[param] === type).length
             return acc
         }, {})
         setCount(Object.values(counts))
@@ -62,39 +55,24 @@ export default function Types({ name, time }) {
                 'rgba(72, 209, 168, 0.5)',
                 'rgba(72, 209, 0, 0.5)',
                 'rgba(220, 19, 0, 0.5)',
-                'rgba(255, 99, 132, 0.5)',
-                'rgba(183, 46, 168, 0.5)',
-                'rgba(72, 209, 168, 0.5)',
-                ],
-                borderColor: [
-                'rgba(255, 99, 132)',
-                'rgba(183, 46, 168)',
-                'rgba(72, 209, 168)',
-                'rgba(72, 209, 0)',
-                'rgba(220, 19, 0)',
-                'rgba(255, 99, 132)',
-                'rgba(183, 46, 168)',
-                'rgba(72, 209, 168)',
                 ],
                 borderWidth: 2,
             }],
     }
 
     return (
-        <div className="flex flex-col justify-center items-center border-2 p-5 mt-28 rounded-lg w-[65%] h-auto">
-            <h4 className='text-white'>Tipos de Turnos Tomados en {title}</h4>
+        <div className="flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[43%] h-auto">
+            <h4 className='text-white'>Calificación {typeScore}, {title}</h4>
             <Bar data={data} options={options}/>
             <table className='text-white mt-8'>
                 <tr>
-                    <th className='p-2 text-center'>Tipo Turno</th>
                     {types.map((type, index) => (
                         <th key={index} className='p-2 text-center'>{type}</th>
                     ))}
                 </tr>
                 <tr>
-                    <td className='p-2 text-center'>Procentaje</td>
                     {porcentajes.map((porcen, index) => (
-                        <td key={index} className='text-center'>{porcen}%</td>
+                        <td key={index} className='p-2 text-center'>{porcen}%</td>
                     ))}
                 </tr>
             </table>
