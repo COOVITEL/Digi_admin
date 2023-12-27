@@ -1,9 +1,10 @@
 import { TunrsDates } from "@/pages/api/dates";
 import Types from "./typesTurns";
 import {  useState } from "react";
-import StateScore from "./stateScore";
-import TypesScores from "./typesScores";
-import TypesTimes from "./typesTime";
+import StateScore from "./scores/stateScore";
+import TypesScores from "./scores/typesScores";
+import TypesTimes from "./averageTime/typesTime";
+import NumberTurns from "./numberTurns";
 
 
 export default function Navbuttons() {
@@ -34,6 +35,7 @@ export default function Navbuttons() {
                 </ul>
             </nav>
             <Types name={currentName} time={currentTime}/>
+            <NumberTurns />
             <StateScore name={currentName} time={currentTime}/>
             <TypesScores name={currentName} time={currentTime}/>
             <TypesTimes name={currentName} time={currentTime}/>

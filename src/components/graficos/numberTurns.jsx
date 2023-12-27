@@ -2,10 +2,12 @@ import { Chart as ChartJS, CategoryScale, LineElement, PointElement, ArcElement,
 import { TunrsDates } from "@/pages/api/dates";
 import { Line } from "react-chartjs-2"
 import { options } from "../options";
+import { useState } from 'react';
 
 ChartJS.register(CategoryScale, LineElement, PointElement, ArcElement, LinearScale, BarElement, Title, Tooltip, Legend);
 
-export default function AllTime() {
+export default function NumberTurns({ name, time }) {
+    const [datesDays, setDatesDays] = useState(TunrsDates)
 
     const days = TunrsDates.reduce((acc, cur) => {
         if(acc[cur.date]) {
@@ -30,8 +32,7 @@ export default function AllTime() {
     };
 
     return (
-        <div className="flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[450px] h-[300px]">
-            <h4 className='text-white'>Cronología de Numero de Turnos</h4>
+        <div className="flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[70%] h-auto">
             <Line data={datas} options={options}/>
         </div>
     )

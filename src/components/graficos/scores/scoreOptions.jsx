@@ -1,17 +1,15 @@
 import { Chart as ChartJS, CategoryScale, PointElement, ArcElement, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import { TunrsDates } from "@/pages/api/dates";
 import { Bar } from "react-chartjs-2"
-import { options } from "../options";
+import { options } from "../../options";
 import { useEffect, useState } from 'react';
 
 ChartJS.register(CategoryScale, PointElement, ArcElement, LinearScale, BarElement, Title, Tooltip, Legend);
 
-export default function TimeOptions({name, time}) {
-    const asesores = TunrsDates.map((turn) => turn.adviser)
-    const uniqueAsesor = [...new Set(asesores)]
-
-    const [counts, setCount] = useState(uniqueAsesor.reduce((acc, type) => {
-        acc[type] = TunrsDates.filter((turn) => turn.adviser === type).length
+export default function ScoreOptions({name, time, typeScore, list, param}) {
+    const types = list
+    const [counts, setCount] = useState(types.reduce((acc, type) => {
+        acc[type] = TunrsDates.filter((turn) => turn[param] === type).length
         return acc
     }, {}))
     const [porcentajes, setPorcentajes] = useState(types.map((type) => ((counts[type] / TunrsDates.length) * 100).toFixed(2)))
