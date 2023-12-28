@@ -8,15 +8,23 @@ ChartJS.register(CategoryScale, PointElement, ArcElement, LinearScale, BarElemen
 
 export default function Graffic () {
 
-    const turnsTotal = TunrsDates.length
-    const turnsBogota = TunrsDates.filter(turn => turn.city === "Bogotá").length
-    const turnsTunja = TunrsDates.filter(turn => turn.city === "Tunja").length
+    const numNames = TunrsDates.reduce((acc, cur) => {
+      if (acc[cur.city]) {
+        acc[cur.city]++;
+      } else {
+        acc[cur.city] = 1;
+      }
+      return acc
+    }, {})
 
-    const data = {
-        labels: ["Bogotá", "Tunja", "Total"],
+    const labels = Object.keys(numNames)
+    const data = Object.values(numNames)
+
+    const datas = {
+        labels: labels,
         datasets: [{
           label: 'Turnos Sucursal',
-          data: [turnsBogota, turnsTunja, turnsTotal],
+          data: data,
           backgroundColor: [
             'rgba(228, 65, 53, 0.5)',
             'rgba(141, 90, 204, 0.5)',
@@ -35,7 +43,7 @@ export default function Graffic () {
     return (
         <div className="flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[490px] h-[300px]">
             <h4 className='text-white'>Turnos por Sucursales</h4>
-            <Bar data={data} options={options}/>
+            <Bar data={datas} options={options}/>
       </div>
         )
 };

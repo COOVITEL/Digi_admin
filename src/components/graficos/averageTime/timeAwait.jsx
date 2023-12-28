@@ -48,7 +48,7 @@ function createDatasets(labels, dataAwait, dataAttent) {
            {
                data: dataAwait,
                borderColor: 'rgb(75, 192, 192)',
-               pointBackgroundColor: 'rgba(75, 132, 255)',
+               pointBackgroundColor: 'rgba(185, 182, 25)',
                tension: 0.3,
            },
            {
