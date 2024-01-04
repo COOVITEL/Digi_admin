@@ -18,11 +18,24 @@ export default function Types({ name, time }) {
 
     useEffect(() => {
         const date = new Date()
+        let year = date.getFullYear();
         let newMonth = time === 0 ? date.getMonth() + 1 : date.getMonth();
-        let newDates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) === newMonth);
-        if (time === 2) {
+        let newDates;
+
+        if (newMonth == 0) {
+            year = date.getFullYear() - 1;
+            newDates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) === 12 && Number(turn.date.split('-')[0]) === year);
+        } else {
+            newDates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) === newMonth  && Number(turn.date.split('-')[0]) === year);
+        }
+
+        if (time == 2) {
             newMonth = date.getMonth() - 1;
-            newDates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) >= newMonth)
+            if (newMonth < 0) {
+                newDates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) >= (12 + newMonth))
+            } else {
+                newDates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) >= newMonth)
+            }
         }
         if (name == "all") {
             setTitle("Todas las Sucursales");

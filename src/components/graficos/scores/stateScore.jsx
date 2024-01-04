@@ -12,11 +12,24 @@ export default function StateScore({name, time}) {
 
     useEffect(() => {
         const date = new Date()
+        let year = date.getFullYear();
         let newMonth = time === 0 ? date.getMonth() + 1 : date.getMonth();
         let dates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) === newMonth);
+
+        if (newMonth == 0) {
+            year = date.getFullYear() - 1;
+            dates = TunrsDates.filter((turn) => Number(turn.date.split('-')[1]) === 12 && Number(turn.date.split('-')[0]) === year); 
+        } else {
+            dates = TunrsDates.filter((turn) => Number(turn.date.split('-')[1]) === newMonth && Number(turn.date.split('-')[0]) === year);
+        }
+
         if (time === 2) {
             newMonth = date.getMonth() - 1;
-            dates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) >= newMonth)
+            if (newMonth < 0) {
+                dates = TunrsDates.filter((turn) => Number(turn.date.split('-')[1]) >= (12 + newMonth));
+            } else {
+                dates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) >= newMonth)
+            }
         }
         if (name == "all") {
             setDates(dates)

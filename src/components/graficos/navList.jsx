@@ -16,7 +16,7 @@ export default function Navbuttons() {
 
     function handleClick(cityName, time) {
         setCurrentName(cityName);
-        setCurrentTime(time)
+        setCurrentTime(time) 
      }
 
     return (

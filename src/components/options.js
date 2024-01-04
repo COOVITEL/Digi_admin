@@ -20,3 +20,29 @@ export const options = {
       },
    }
   }
+
+  export const optionsAsesors = {
+    plugins: {
+      legend: {
+        display: false,
+        labels: {
+          color: 'white'
+        }
+      }
+    },
+    scales: {
+      y: {
+        ticks: {
+          color: 'white',
+        },
+      },
+      x: {
+        ticks: {
+          color: 'white',
+          font: {
+            size: 10
+          }
+        }
+      },
+   }
+  }
