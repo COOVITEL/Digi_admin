@@ -1,6 +1,8 @@
 import { TunrsDates } from "@/pages/api/dates";
 import { useState } from "react";
 import NumberAsesors from "./turnsAsesors";
+import TypesScores from "./scores/typesScores";
+import TimesAwaitAsesors from "./averageTime";
 
 
 export default function NavAsesors() {
@@ -30,6 +32,8 @@ export default function NavAsesors() {
                 </ul>
             </nav>
             <NumberAsesors name={currentName} time={currentTime}/>
+            <TypesScores name={currentName} time={currentTime}/>
+            <TimesAwaitAsesors name={currentName} time={currentTime}/>
         </div>
     )
 }

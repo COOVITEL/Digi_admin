@@ -10,25 +10,25 @@ export default function StateScore({name, time}) {
     const [title, setTitle] = useState()
     const [dates, setDates] = useState(TunrsDates)
 
-    useEffect(() => {
+    function CountDates(list, name, time) {
         const date = new Date()
         let year = date.getFullYear();
         let newMonth = time === 0 ? date.getMonth() + 1 : date.getMonth();
-        let dates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) === newMonth);
+        let dates = list.filter((turn) => Number(turn.date.split("-")[1]) === newMonth);
 
         if (newMonth == 0) {
             year = date.getFullYear() - 1;
-            dates = TunrsDates.filter((turn) => Number(turn.date.split('-')[1]) === 12 && Number(turn.date.split('-')[0]) === year); 
+            dates = list.filter((turn) => Number(turn.date.split('-')[1]) === 12 && Number(turn.date.split('-')[0]) === year); 
         } else {
-            dates = TunrsDates.filter((turn) => Number(turn.date.split('-')[1]) === newMonth && Number(turn.date.split('-')[0]) === year);
+            dates = list.filter((turn) => Number(turn.date.split('-')[1]) === newMonth && Number(turn.date.split('-')[0]) === year);
         }
 
         if (time === 2) {
             newMonth = date.getMonth() - 1;
             if (newMonth < 0) {
-                dates = TunrsDates.filter((turn) => Number(turn.date.split('-')[1]) >= (12 + newMonth));
+                dates = list.filter((turn) => Number(turn.date.split('-')[1]) >= (12 + newMonth));
             } else {
-                dates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) >= newMonth)
+                dates = list.filter((turn) => Number(turn.date.split("-")[1]) >= newMonth)
             }
         }
         if (name == "all") {
@@ -39,6 +39,10 @@ export default function StateScore({name, time}) {
             setDates(dates.filter((turn) => turn.city === name))
             setTitle(name)
         }
+    }
+
+    useEffect(() => {
+        CountDates(TunrsDates, name, time)
     }, [name, time]);
 
     const empty = dates.filter((turn) => turn.score_time === "empty").length

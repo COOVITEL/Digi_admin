@@ -8,11 +8,32 @@ import { optionsAsesors } from "../options";
 
 ChartJS.register(CategoryScale, PointElement, ArcElement, LinearScale, BarElement, Title, Tooltip, Legend);
 
-function countTurns(list, turns, name) {
+function countTurns(list, turns, name, time) {
+    const date = new Date()
+    let year = date.getFullYear();
+    let newMonth = time === 0 ? date.getMonth() + 1 : date.getMonth();
+    let newDates;
+
+    if (newMonth == 0) {
+        year = date.getFullYear() - 1;
+        newDates = turns.filter((turn) => Number(turn.date.split("-")[1]) === 12 && Number(turn.date.split('-')[0]) === year);
+    } else {
+        newDates = turns.filter((turn) => Number(turn.date.split("-")[1]) === newMonth  && Number(turn.date.split('-')[0]) === year);
+    }
+
+    if (time == 2) {
+        newMonth = date.getMonth() - 1;
+        if (newMonth < 0) {
+            newDates = turns.filter((turn) => Number(turn.date.split("-")[1]) >= (12 + newMonth))
+        } else {
+            newDates = turns.filter((turn) => Number(turn.date.split("-")[1]) >= newMonth)
+        }
+    }
+
     let listAsesors = []
     for (const asesor of list) {
         if (asesor.sucursal === name) {
-            asesor.turns = turns.filter((turn) => turn.adviser == asesor.cc).length
+            asesor.turns = newDates.filter((turn) => turn.adviser == asesor.cc).length
             listAsesors.push(asesor)
         }
     }
@@ -21,12 +42,11 @@ function countTurns(list, turns, name) {
 
 export default function NumberAsesors({ name, time}) {
 
-    const [asesors, setAsesors] = useState(countTurns(ListAsesors, TunrsDates, name))
+    const [asesors, setAsesors] = useState(countTurns(ListAsesors, TunrsDates, name, time))
 
     useEffect(() => {
-        setAsesors(countTurns(ListAsesors, TunrsDates, name))
-        console.log(asesors)
-    }, [name])
+        setAsesors(countTurns(ListAsesors, TunrsDates, name, time))
+    }, [name, time])
 
     const types = asesors.map((ase) => ase.name)
     const counts = asesors.map((ase) => ase.turns)
@@ -61,7 +81,7 @@ export default function NumberAsesors({ name, time}) {
 
     return (
         <div className="flex flex-col justify-center items-center border-2 p-5 mt-28 rounded-lg w-[65%] h-auto">
-            <h4 className='text-white'>Tipos de Turnos Tomados en</h4>
+            <h4 className='text-white font-bold'>Numero de turnos tomados por cada Asesor</h4>
             <Bar data={data} options={optionsAsesors}/>
         </div>
     )
