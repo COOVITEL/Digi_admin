@@ -21,7 +21,7 @@ export default function AllTime() {
     const datas = {
         labels: labels,
         datasets: [{
-            label: 'Turnos en el Tiempo',
+            label: 'Turnos',
             data: data,
             borderColor: 'rgb(75, 192, 192)',
             pointBackgroundColor: 'rgba(75, 132, 255)',
@@ -31,7 +31,7 @@ export default function AllTime() {
 
     return (
         <div className="flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[450px] h-[300px]">
-            <h4 className='text-white'>Cronología de Numero de Turnos</h4>
+            <h4 className='text-white'>Cantidad de Turnos por Fecha</h4>
             <Line data={datas} options={options}/>
         </div>
     )

@@ -72,28 +72,30 @@ function calculateTimes(list, property1, property2, name) {
     return datesTimesAsesors;
 }
 
-function createDatasets(labels, dataAwait, dataAtten) {
+function createDatasets(labels, dataAwait, dataAtten, names) {
 
     const listColorsWeak = [
-        'rgb(231,112,112)',
-        'rgb(97,99,161)',
-        'rgb(120,200,132)']
-
+        'rgb(56,135,190)',
+        'rgb(159,187,115)',
+        'rgb(236,143,94)']
+        
     const listColorsStrong = [
-        'rgb(238,152,152)', 
-        'rgb(97,99,161)',
-        'rgb(120,200,132)']
+        'rgb(82,211,216)', 
+        'rgb(225,236,200)',
+        'rgb(243,182,100)']
 
     let dataSets = [];
 
     for (let x = 0; x < dataAwait.length; x++) {
         dataSets.push({
+            label: `Tiempo de espera ${names[x]}`,
             data: dataAwait[x],
             borderColor: listColorsWeak[x],
             pointBackgroundColor: listColorsWeak[x],
             tension: 0.3,
         },)
         dataSets.push({
+            label: 'Tiempo de Atención',
             data: dataAtten[x],
             borderColor: listColorsStrong[x],
             pointBackgroundColor: listColorsStrong[x],
@@ -142,32 +144,30 @@ export default function TimesAwait({name, time}) {
     
     let dataAwait = [], dataAtten = [];
     for ( let y = 0; y < names.length; y++) {
-        dataAtten.push(Object.values(timesAwait[y]))
-        dataAwait.push(Object.values(timesAtten[y]))
+        dataAwait.push(Object.values(timesAwait[y]))
+        dataAtten.push(Object.values(timesAtten[y]))
     }
 
-    const datas = createDatasets(labels, dataAwait, dataAtten);
+    const datas = createDatasets(labels, dataAwait, dataAtten, names);
+
+    const colorsOptions = [
+        ['text-[rgb(12,128,205)]', 'text-[rgb(56,135,190)]', 'text-[rgb(82,211,216)]'],
+        ['text-[rgb(159,187,115)]', 'text-[rgb(159,187,115)]', 'text-[rgb(225,236,200)]'],
+        ['text-[rgb(236,143,94)]', 'text-[rgb(236,143,94)]', 'text-[rgb(243,182,100)]']
+    ]
 
     return (
         <div className='flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[67%] h-auto'>
             <h4 className='text-white'>Tiempo de Espera en {title}</h4>
             <Line data={datas} options={options}/> 
             <div className='flex flex-row gap-16 pt-4'>
-                <div className='flex flex-col gap-3'>
-                    <h3 className='text-[rgb(238,152,152)] text-sm text-center'>{names[0]}</h3>
-                    <h3 className='text-[rgb(238,152,152)] text-sm text-center'>Espera promedio:  {averageTimeAwait[0].toFixed(2)} Min</h3>
-                    <h3 className='text-[rgb(231,112,112)] text-sm text-center'>Atencion promedio:  {averageTimeAtten[0].toFixed(2)} Min</h3>
-                </div>
-                <div className='flex flex-col gap-3'>
-                    <h3 className='text-[rgb(238,152,152)] text-sm text-center'>{names[1]}</h3>
-                    <h3 className='text-[rgb(125,128,205)] text-sm text-center'>Espera promedio:  {averageTimeAwait[1].toFixed(2)} Min</h3>
-                    <h3 className='text-[rgb(97,99,161)] text-sm text-center'>Atencion promedio:  {averageTimeAtten[1].toFixed(2)} Min</h3>
-                </div>
-                <div className='flex flex-col gap-3'>
-                    <h3 className='text-[rgb(238,152,152)] text-sm text-center'>{names[2]}</h3>
-                    <h3 className='text-[rgb(169,220,176)] text-sm text-center'>Espera promedio:  {averageTimeAwait[2].toFixed(2)} Min</h3>
-                    <h3 className='text-[rgb(120,200,132)] text-sm text-center'>Atencion promedio:  {averageTimeAtten[2].toFixed(2)} Min</h3>
-                </div>
+                {names.map((name, index) => (
+                    <div className='flex flex-col gap-3'>
+                        <h4 className={`${colorsOptions[index][0]} text-sm text-center`}>{name}</h4>
+                        <h4 className={`${colorsOptions[index][1]} text-sm text-center`}>Espera promedio:  {averageTimeAwait[index].toFixed(2)} Min</h4>
+                        <h4 className={`${colorsOptions[index][2]} text-sm text-center`}>Atencion promedio:  {averageTimeAtten[index].toFixed(2)} Min</h4> 
+                    </div>
+                ))}
             </div>
         </div>
     )

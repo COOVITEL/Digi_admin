@@ -5,11 +5,11 @@ import { TunrsDates } from "@/pages/api/dates";
 ChartJS.register(CategoryScale, PointElement, ArcElement, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export default function GrafficScores() {
-    const empty = TunrsDates.filter((turn) => turn.score_time === "empty").length
+    const empty = TunrsDates.filter((turn) => turn.score_time === "empty" && turn.state === "finished").length
     const qualitySucursal = TunrsDates.filter((turn) => turn.score_time != "empty" && turn.state === "finished" && turn.sms_send != "send").length
     const qualitySms = TunrsDates.filter((turn) => turn.score_time != "empty" && turn.state === "finished" && turn.sms_send === "send").length
-    const qualityCall = TunrsDates.filter((turn) => turn.score_time != "empty" && turn.state === "by_call").length
-    const notContact = TunrsDates.filter((turn) => turn.state == 'not_contacted').length
+    const qualityCall = TunrsDates.filter((turn) => turn.state === "by_call").length
+    const notContact = TunrsDates.filter((turn) => turn.state === 'not_contacted').length
 
     const data = {
         datasets: [{
@@ -35,7 +35,7 @@ export default function GrafficScores() {
     const options = {
         plugins: {
             legend: {
-                display: false
+                display: false,
             }
         }
     }
