@@ -62,10 +62,10 @@ export default function ScoreOptions({name, time, typeScore, list, param}) {
         datasets: [{
             data: counts,
             backgroundColor: [
-                'rgba(255, 99, 132, 0.5)',
-                'rgba(183, 46, 168, 0.5)',
-                'rgba(72, 209, 168, 0.5)',
-                'rgba(72, 209, 0, 0.5)',
+                'rgb(52, 104, 192)',
+                'rgb(134, 167, 252)',
+                'rgb(170, 217, 187)',
+                'rgb(250, 239, 155)',
                 'rgba(220, 19, 0, 0.5)',
                 ],
                 borderWidth: 2,

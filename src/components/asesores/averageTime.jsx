@@ -158,7 +158,7 @@ export default function TimesAwait({name, time}) {
 
     return (
         <div className='flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[67%] h-auto'>
-            <h4 className='text-white'>Tiempo de Espera en {title}</h4>
+            <h4 className='text-white font-bold'>Tiempo de Espera en {title}</h4>
             <Line data={datas} options={options}/> 
             <div className='flex flex-row gap-16 pt-4'>
                 {names.map((name, index) => (

@@ -15,11 +15,11 @@ export default function GrafficTypesScores() {
         datasets: [{
             data: [Excelente, Bueno, Normal, Regular, Malo],
             backgroundColor: [
-                'rgba(146, 122, 197, 0.9)',
-                'rgba(230, 138, 82, 0.9)',
-                'rgba(230, 151, 227, 0.9)',
-                'rgba(95, 235, 81, 0.9)',
-                'rgba(230, 138, 82, 0.9)',
+                'rgba(54, 162, 235, 0.8)',
+                'rgba(153, 102, 255, 0.8)',
+                'rgba(255, 206, 86, 0.8)',
+                'rgba(75, 192, 192, 0.8)',
+                'rgba(255, 99, 132, 0.8)',
               ],
         }],
         labels: ['Excelente', 'Bueno', 'Normal', 'Regular', 'Malo']

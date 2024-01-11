@@ -29,12 +29,12 @@ export default function TimeScore({name, time}) {
             {
                 label: 'Muy rápido',
                 data: service[0], // Datos para las subcolumnas de la primera columna principal
-                backgroundColor: 'rgba(255, 99, 132, 0.8)' // Color de las subcolumnas
+                backgroundColor: 'rgba(54, 162, 235, 0.8)' // Color de las subcolumnas
             },
             {
                 label: 'Rápido',
                 data: service[1], // Datos para las subcolumnas de la segunda columna principal
-                backgroundColor: 'rgba(54, 162, 235, 0.8)' // Color de las subcolumnas
+                backgroundColor: 'rgba(153, 102, 255, 0.8)' // Color de las subcolumnas
             },
             {
                 label: 'Normal',
@@ -49,7 +49,7 @@ export default function TimeScore({name, time}) {
             {
                 label: 'Muy Lento',
                 data: service[4], // Datos para las subcolumnas de la quinta columna principal
-                backgroundColor: 'rgba(153, 102, 255, 0.8)' // Color de las subcolumnas
+                backgroundColor: 'rgba(255, 99, 132, 0.8)' // Color de las subcolumnas
             }
         ]
     };

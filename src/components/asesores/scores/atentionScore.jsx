@@ -29,12 +29,12 @@ export default function AttentionScore({name, time}) {
             {
                 label: 'Si',
                 data: service[0], // Datos para las subcolumnas de la primera columna principal
-                backgroundColor: 'rgba(255, 99, 132, 0.8)' // Color de las subcolumnas
+                backgroundColor: 'rgba(54, 162, 235, 0.8)' // Color de las subcolumnas
             },
             {
                 label: 'No',
                 data: service[1], // Datos para las subcolumnas de la segunda columna principal
-                backgroundColor: 'rgba(54, 162, 235, 0.8)' // Color de las subcolumnas
+                backgroundColor: 'rgba(255, 99, 132, 0.8)' // Color de las subcolumnas
             }
         ]
     };

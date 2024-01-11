@@ -59,11 +59,11 @@ export default function NumberAsesors({ name, time}) {
                 'rgba(255, 99, 132, 0.5)',
                 'rgba(183, 46, 168, 0.5)',
                 'rgba(72, 209, 168, 0.5)',
-                'rgba(72, 209, 0, 0.5)',
+                'rgba(12, 22, 34, 0.5)',
+                'rgba(45, 112, 232, 0.5)',
                 'rgba(220, 19, 0, 0.5)',
                 'rgba(255, 99, 132, 0.5)',
-                'rgba(183, 46, 168, 0.5)',
-                'rgba(72, 209, 168, 0.5)',
+                'rgba(22, 67, 111, 0.5)',
                 ],
                 borderColor: [
                 'rgba(255, 99, 132)',
@@ -81,7 +81,7 @@ export default function NumberAsesors({ name, time}) {
 
     return (
         <div className="flex flex-col justify-center items-center border-2 p-5 mt-28 rounded-lg w-[65%] h-auto">
-            <h4 className='text-white font-bold'>Numero de turnos tomados por cada Asesor</h4>
+            <h4 className='text-white font-bold'>Cantidad de turnos tomados por cada Asesor</h4>
             <Bar data={data} options={optionsAsesors}/>
         </div>
     )
