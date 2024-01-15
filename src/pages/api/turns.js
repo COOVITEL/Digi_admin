@@ -5,4 +5,3 @@ const turnApi = axios.create({
 })
 export const getAllTurns = () => turnApi.get('/')
 
-export const updateTurn = (id, datas_turn) => turnApi.put(`/${id}/`, datas_turn)

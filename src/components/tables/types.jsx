@@ -32,17 +32,20 @@ export const GridExample = () => {
   ]);
 
   useEffect(() => {
-    console.log("test")
     setRowData(TunrsDates)
-    console.log(rowData)
   }, [])
 
   const defaultColDef = useMemo(() => ({filter: true}))
 
   // Container: Defines the grid's theme & dimensions.
   return (
-    <div className={"ag-theme-quartz"} style={{ width: '100%', height: '100%' }}>
-      <AgGridReact rowData={rowData} columnDefs={colDefs} defaultColDef={defaultColDef} pagination={true}/>
+    <div className='w-full h-full flex items-center justify-center'>
+      <div className={"ag-theme-quartz"} style={{ width: '90%', height: '80%' }}>
+        <h4 className='text-white p-5'>
+          Puedes encontrar todos los turnos tomados por nuestros asociados, puedes filtrarlos por numero de cedula, sucursal, telefono entro otros.
+        </h4>
+        <AgGridReact rowData={rowData} columnDefs={colDefs} defaultColDef={defaultColDef} pagination={true}/>
+      </div>
     </div>
   );
 };

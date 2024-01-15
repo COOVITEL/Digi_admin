@@ -2,10 +2,23 @@ import { Chart as ChartJS, CategoryScale, PointElement, ArcElement, LinearScale,
 import { TunrsDates } from "@/pages/api/dates";
 import { Bar } from "react-chartjs-2"
 import { options } from "../options";
+import { useEffect, useState } from 'react';
+import { getAllTurns } from '@/pages/api/turns';
 
 ChartJS.register(CategoryScale, PointElement, ArcElement, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export default function GrafficTypes() {
+
+    const [turns, setTurns] = useState([])
+
+    useEffect(() => {
+        async function loadTurns() {
+            const res = await getAllTurns()
+            setTurns(res.data)
+        }
+        loadTurns()
+    }, [])
+
     const caj = TunrsDates.filter((type) => type.type2 === "Caja").length
     const cre = TunrsDates.filter((type) => type.type2 === "Crédito").length
     const afi = TunrsDates.filter((type) => type.type2 === "Afiliación").length
@@ -44,9 +57,14 @@ export default function GrafficTypes() {
     }
 
     return (
-        <div className="flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[520px] h-[300px]">
-            <h4 className='text-white'>Tipos de Turnos Tomados en las Sucursales</h4>
-            <Bar data={data} options={options}/>
+        <div className='flex flex-row items-center gap-5 p-10'>
+            <div className="flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[750px] h-[500px]">
+                <h4 className='text-white'>Tipos de Turnos Tomados en las Sucursales</h4>
+                <Bar data={data} options={options}/>
+            </div>
+            <p className='text-white w-52'>
+                Tipo y numero de turnos tomados en todas nuestras sucursales.
+            </p>
         </div>
     )
 }

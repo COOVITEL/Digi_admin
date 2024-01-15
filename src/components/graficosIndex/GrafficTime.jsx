@@ -30,9 +30,15 @@ export default function AllTime() {
     };
 
     return (
-        <div className="flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[450px] h-[300px]">
-            <h4 className='text-white'>Cantidad de Turnos por Fecha</h4>
-            <Line data={datas} options={options}/>
+        <div className='flex flex-row items-center gap-5 p-10'>
+            <div className="flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[750px] h-[500px]">
+                <h4 className='text-white'>Cantidad de Turnos por Fecha</h4>
+                <Line data={datas} options={options}/>
+            </div>
+            <p className='text-white w-52'>
+                Numero de turnos tomados en todas las sucursales por fecha,
+                esto nos permitira conocer que dias y que fechas son las mas visitadas por nuestros asociados.
+            </p>
         </div>
     )
 }
