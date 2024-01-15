@@ -18,11 +18,11 @@ export default function GrafficScores() {
         loadTurns()
     }, [])
 
-    const empty = TunrsDates.filter((turn) => turn.score_time === "empty" && turn.state === "finished").length
-    const qualitySucursal = TunrsDates.filter((turn) => turn.score_time != "empty" && turn.state === "finished" && turn.sms_send != "send").length
-    const qualitySms = TunrsDates.filter((turn) => turn.score_time != "empty" && turn.state === "finished" && turn.sms_send === "send").length
-    const qualityCall = TunrsDates.filter((turn) => turn.state === "by_call").length
-    const notContact = TunrsDates.filter((turn) => turn.state === 'not_contacted').length
+    const empty = turns.filter((turn) => turn.score_time === "empty" && turn.state === "finished").length
+    const qualitySucursal = turns.filter((turn) => turn.score_time != "empty" && turn.state === "finished" && turn.sms_send != "send").length
+    const qualitySms = turns.filter((turn) => turn.score_time != "empty" && turn.state === "finished" && turn.sms_send === "send").length
+    const qualityCall = turns.filter((turn) => turn.state === "by_call").length
+    const notContact = turns.filter((turn) => turn.state === 'not_contacted').length
 
     const data = {
         datasets: [{

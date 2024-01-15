@@ -18,7 +18,7 @@ export default function Graffic () {
     loadTurns()
   }, [])
 
-  const numNames = TunrsDates.reduce((acc, cur) => {
+  const numNames = turns.reduce((acc, cur) => {
     if (acc[cur.city]) {
       acc[cur.city]++;
     } else {

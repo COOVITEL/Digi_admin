@@ -19,14 +19,14 @@ export default function GrafficTypes() {
         loadTurns()
     }, [])
 
-    const caj = TunrsDates.filter((type) => type.type2 === "Caja").length
-    const cre = TunrsDates.filter((type) => type.type2 === "Crédito").length
-    const afi = TunrsDates.filter((type) => type.type2 === "Afiliación").length
-    const aho = TunrsDates.filter((type) => type.type2 === "Ahorro").length
-    const seg = TunrsDates.filter((type) => type.type2 === "Seguros").length
-    const aux = TunrsDates.filter((type) => type.type2 === "Auxilios").length
-    const est = TunrsDates.filter((type) => type.type2 === "Estado").length
-    const otr = TunrsDates.filter((type) => type.type2 === "Otros").length
+    const caj = turns.filter((type) => type.type2 === "Caja").length
+    const cre = turns.filter((type) => type.type2 === "Crédito").length
+    const afi = turns.filter((type) => type.type2 === "Afiliación").length
+    const aho = turns.filter((type) => type.type2 === "Ahorro").length
+    const seg = turns.filter((type) => type.type2 === "Seguros").length
+    const aux = turns.filter((type) => type.type2 === "Auxilios").length
+    const est = turns.filter((type) => type.type2 === "Estado").length
+    const otr = turns.filter((type) => type.type2 === "Otros").length
 
     const data = {
         labels: ["Caja", "Crédito", "Afiliación", "Ahorro", "Seguros", "Auxilios", "Estado de cuenta", "Otros"],
@@ -62,7 +62,7 @@ export default function GrafficTypes() {
                 <h4 className='text-white'>Tipos de Turnos Tomados en las Sucursales</h4>
                 <Bar data={data} options={options}/>
             </div>
-            <p className='text-white w-52'>
+            <p className='text-white w-[200px]'>
                 Tipo y numero de turnos tomados en todas nuestras sucursales.
             </p>
         </div>

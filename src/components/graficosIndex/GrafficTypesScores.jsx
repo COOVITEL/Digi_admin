@@ -18,11 +18,11 @@ export default function GrafficTypesScores() {
         loadTurns()
     }, [])
 
-    const Excelente = TunrsDates.filter((turn) => turn.score_service == "Excelente").length
-    const Bueno = TunrsDates.filter((turn) => turn.score_service == "Bueno").length
-    const Normal = TunrsDates.filter((turn) => turn.score_service == "Normal").length
-    const Regular = TunrsDates.filter((turn) => turn.score_service == "Regular").length
-    const Malo = TunrsDates.filter((turn) => turn.score_service == "Malo").length
+    const Excelente = turns.filter((turn) => turn.score_service == "Excelente").length
+    const Bueno = turns.filter((turn) => turn.score_service == "Bueno").length
+    const Normal = turns.filter((turn) => turn.score_service == "Normal").length
+    const Regular = turns.filter((turn) => turn.score_service == "Regular").length
+    const Malo = turns.filter((turn) => turn.score_service == "Malo").length
 
     const data = {
         datasets: [{

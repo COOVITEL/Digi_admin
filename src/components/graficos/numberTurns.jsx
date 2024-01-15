@@ -3,6 +3,7 @@ import { TunrsDates } from "@/pages/api/dates";
 import { Line } from "react-chartjs-2"
 import { options } from "../options";
 import { useEffect, useState } from 'react';
+import { getAllTurns } from '@/pages/api/turns';
 
 ChartJS.register(CategoryScale, LineElement, PointElement, ArcElement, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -17,7 +18,7 @@ function countList(list) {
     }, {})
 }
 
-function filterDatesByNameAndMonth(name, time) {
+function filterDatesByNameAndMonth(name, time, list) {
     const date = new Date();
     let year = date.getFullYear();
     let newMonth = time === 0 ? date.getMonth() + 1 : date.getMonth();
@@ -25,17 +26,17 @@ function filterDatesByNameAndMonth(name, time) {
 
     if (newMonth == 0) {
         year = date.getFullYear() - 1;
-        newDates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) === 12 && Number(turn.date.split('-')[0]) === year);
+        newDates = list.filter((turn) => Number(turn.date.split("-")[1]) === 12 && Number(turn.date.split('-')[0]) === year);
     } else {
-        newDates = TunrsDates.filter((turn) => Number(turn.date.split('-')[1]) === newMonth && Number(turn.date.split('-')[0]) === year);
+        newDates = list.filter((turn) => Number(turn.date.split('-')[1]) === newMonth && Number(turn.date.split('-')[0]) === year);
     }
 
     if (time === 2) {
         newMonth = date.getMonth() - 1;
         if (newMonth < 0) {
-            newDates = TunrsDates.filter((turn) => (Number(turn.date.split('-')[1]) >= (12 + newMonth) && Number(turn.date.split('-')[0]) === year)) ;
+            newDates = list.filter((turn) => (Number(turn.date.split('-')[1]) >= (12 + newMonth) && Number(turn.date.split('-')[0]) === year)) ;
         } else {
-            newDates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) >= newMonth && Number(turn.date.split('-')[0]) === year);
+            newDates = list.filter((turn) => Number(turn.date.split("-")[1]) >= newMonth && Number(turn.date.split('-')[0]) === year);
         }
     }
     return name === "all" ? newDates : newDates.filter((turn) => turn.city === name);
@@ -43,10 +44,16 @@ function filterDatesByNameAndMonth(name, time) {
 
 export default function NumberTurns({ name, time }) {
 
-    const [countDays, setCountDays] = useState(countList(TunrsDates))
+    const [turns, setTurns] = useState([])
+    const [countDays, setCountDays] = useState([])
 
     useEffect(() => {
-        const dates = filterDatesByNameAndMonth(name, time)
+        async function loadTurns() {
+            const res = await getAllTurns()
+            setTurns(res.data)
+        }
+        loadTurns()
+        const dates = filterDatesByNameAndMonth(name, time, turns)
         setCountDays(countList(dates))
     }, [name, time])
     

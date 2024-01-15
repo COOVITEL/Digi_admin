@@ -3,6 +3,7 @@ import 'ag-grid-community/styles/ag-grid.css'; // Core CSS
 import 'ag-grid-community/styles/ag-theme-quartz.css'; // Theme
 import { useEffect, useMemo, useState } from 'react';
 import { TunrsDates } from '@/pages/api/dates';
+import { getAllTurns } from '@/pages/api/turns';
 
 // Create new GridExample component
 export const GridExample = () => {
@@ -32,7 +33,11 @@ export const GridExample = () => {
   ]);
 
   useEffect(() => {
-    setRowData(TunrsDates)
+    async function loadTurns() {
+      const res = await getAllTurns()
+      setRowData(res.data)
+    }
+    loadTurns()
   }, [])
 
   const defaultColDef = useMemo(() => ({filter: true}))

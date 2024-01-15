@@ -3,59 +3,32 @@ import { TunrsDates } from "@/pages/api/dates";
 import { Bar } from "react-chartjs-2"
 import { options } from "../options";
 import { useEffect, useState } from 'react';
+import { getAllTurns } from '@/pages/api/turns';
 
 ChartJS.register(CategoryScale, PointElement, ArcElement, LinearScale, BarElement, Title, Tooltip, Legend);
-
 export default function Types({ name, time }) {
 
+    const [turns, setTurns] = useState([])
+    const [currentTurns, setCurrentTurns] = useState([])
     const types = ["Caja", "Crédito", "Afiliación", "Ahorro", "Seguros", "Auxilios", "Estado", "Otros"]
-    const [counts, setCount] = useState(types.reduce((acc, type) => {
-        acc[type] = TunrsDates.filter((turn) => turn.type2 === type).length
-        return acc
-    }, {}))
-    const [porcentajes, setPorcentajes] = useState(types.map((type) => ((counts[type] / TunrsDates.length) * 100).toFixed(2)))
-    const [title, setTitle] = useState("Todas las Sucursales")
 
     useEffect(() => {
-        const date = new Date()
-        let year = date.getFullYear();
-        let newMonth = time === 0 ? date.getMonth() + 1 : date.getMonth();
-        let newDates;
-
-        if (newMonth == 0) {
-            year = date.getFullYear() - 1;
-            newDates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) === 12 && Number(turn.date.split('-')[0]) === year);
-        } else {
-            newDates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) === newMonth  && Number(turn.date.split('-')[0]) === year);
+        async function loadTurn() {
+            const res = await getAllTurns()
+            setCurrentTurns(res.data)
         }
-
-        if (time == 2) {
-            newMonth = date.getMonth() - 1;
-            if (newMonth < 0) {
-                newDates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) >= (12 + newMonth))
-            } else {
-                newDates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) >= newMonth)
-            }
-        }
-        if (name == "all") {
-            setTitle("Todas las Sucursales");
-        }
-        if (name != "all") {
-            newDates = newDates.filter((turn) => turn.city === name)
-            setTitle(name);
-        }
-    
-        const counts = types.reduce((acc, type) => {
-            acc[type] = newDates.filter((turn) => turn.type2 === type).length
-            return acc
-        }, {})
-        setCount(Object.values(counts))
-    
-        const total = Object.values(counts).reduce((a, b) => a + b, 0)
-        const porcentajes = types.map((type) => ((counts[type] / total) * 100).toFixed(2))
-        setPorcentajes(porcentajes)
-        
+        loadTurn()
+        const dates = countTurns(name, time, currentTurns)
+        setTurns(dates)
     }, [name, time])
+
+    const counts = types.reduce((acc, type) => {
+        acc[type] = turns.filter((turn) => turn.type2 === type).length
+        return acc
+    }, {})
+
+    const total = Object.values(counts).reduce((a, b) => a + b, 0)
+    const porcentajes = types.map((type) => ((counts[type] / total) * 100).toFixed(2))
 
     const data = {
         labels: types,
@@ -87,7 +60,7 @@ export default function Types({ name, time }) {
 
     return (
         <div className="flex flex-col justify-center items-center border-2 p-5 mt-28 rounded-lg w-[65%] h-auto">
-            <h4 className='text-white'>Tipos de Turnos Tomados en {title}</h4>
+            <h4 className='text-white'>Tipos de Turnos Tomados en </h4>
             <Bar data={data} options={options}/>
             <table className='text-white mt-8'>
                 <tr>
@@ -105,4 +78,34 @@ export default function Types({ name, time }) {
             </table>
         </div>
     )
+}
+
+
+function countTurns(name, time, list) {
+    const date = new Date()
+    let year = date.getFullYear();
+    let newMonth = time === 0 ? date.getMonth() + 1 : date.getMonth();
+    let newDates;
+
+    if (newMonth == 0) {
+        year = date.getFullYear() - 1;
+        newDates = list.filter((turn) => Number(turn.date.split("-")[1]) === 12 && Number(turn.date.split('-')[0]) === year);
+    } else {
+        newDates = list.filter((turn) => Number(turn.date.split("-")[1]) === newMonth  && Number(turn.date.split('-')[0]) === year);
+    }
+
+    if (time == 2) {
+        newMonth = date.getMonth() - 1;
+        if (newMonth < 0) {
+            newDates = list.filter((turn) => Number(turn.date.split("-")[1]) >= (12 + newMonth))
+        } else {
+            newDates = list.filter((turn) => Number(turn.date.split("-")[1]) >= newMonth)
+        }
+    }
+    if (name == "all") {
+    }
+    if (name != "all") {
+        newDates = list.filter((turn) => turn.city === name)
+    }
+    return newDates
 }

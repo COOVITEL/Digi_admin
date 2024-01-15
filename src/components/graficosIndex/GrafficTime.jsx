@@ -2,12 +2,24 @@ import { Chart as ChartJS, CategoryScale, LineElement, PointElement, ArcElement,
 import { TunrsDates } from "@/pages/api/dates";
 import { Line } from "react-chartjs-2"
 import { options } from "../options";
+import { useEffect, useState } from 'react';
+import { getAllTurns } from '@/pages/api/turns';
 
 ChartJS.register(CategoryScale, LineElement, PointElement, ArcElement, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export default function AllTime() {
 
-    const days = TunrsDates.reduce((acc, cur) => {
+    const [turns, setTurns] = useState([])
+
+    useEffect(() => {
+        async function loadTurns() {
+            const res = await getAllTurns()
+            setTurns(res.data)
+        }
+        loadTurns()
+    }, [])
+
+    const days = turns.reduce((acc, cur) => {
         if(acc[cur.date]) {
             acc[cur.date]++
         } else {

@@ -2,13 +2,24 @@ import { Chart as ChartJS, CategoryScale, PointElement, ArcElement, LinearScale,
 import {  Pie } from "react-chartjs-2";
 import { TunrsDates } from "@/pages/api/dates";
 import { useEffect, useState } from "react";
+import { getAllTurns } from '@/pages/api/turns';
 
 ChartJS.register(CategoryScale, PointElement, ArcElement, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export default function StateScore({name, time}) {
     const types = ['Sin calificar', 'Calificado en Sucursal', 'Calificado por SMS', 'Calificado por llamada', 'No contactado']
     const [title, setTitle] = useState()
-    const [dates, setDates] = useState(TunrsDates)
+    const [dates, setDates] = useState([])
+    const [turns, setTurns] = useState([])
+
+    useEffect(() => {
+        async function loadTurns() {
+            const res = await getAllTurns()
+            setTurns(res.data)
+        }
+        loadTurns()
+        CountDates(turns, name, time)
+    }, [name, time]);
 
     function CountDates(list, name, time) {
         const date = new Date()
@@ -40,10 +51,6 @@ export default function StateScore({name, time}) {
             setTitle(name)
         }
     }
-
-    useEffect(() => {
-        CountDates(TunrsDates, name, time)
-    }, [name, time]);
 
     const empty = dates.filter((turn) => turn.score_time === "empty").length
     const qualitySucursal = dates.filter((turn) => turn.score_time != "empty" && turn.state === "finished" && turn.sms_send != "send").length
