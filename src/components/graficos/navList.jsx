@@ -34,6 +34,7 @@ export default function Navbuttons() {
                     <button className={currentTime === 2 ? "text-white text-xl" : "text-zinc-400 hover:scale-110 hover:text-white"} onClick={() => handleClick(currentName, 2)}>Ultimos 3 meses</button>
                 </ul>
             </nav>
+            <h3 className="text-white flex mt-28">Poder conocer los datos generales es bueno, pero poder conocer los datos por sucursal es genial.</h3>
             <Types name={currentName} time={currentTime}/>
             <NumberTurns name={currentName} time={currentTime}/>
             <StateScore name={currentName} time={currentTime}/>

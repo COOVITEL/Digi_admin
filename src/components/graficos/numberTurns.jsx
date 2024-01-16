@@ -7,6 +7,50 @@ import { getAllTurns } from '@/pages/api/turns';
 
 ChartJS.register(CategoryScale, LineElement, PointElement, ArcElement, LinearScale, BarElement, Title, Tooltip, Legend);
 
+export default function NumberTurns({ name, time }) {
+
+    const [turns, setTurns] = useState([])
+    const [countDays, setCountDays] = useState([])
+
+    useEffect(() => {
+        /*async function loadTurns() {
+            const res = await getAllTurns()
+            setTurns(res.data)
+        }
+        loadTurns()
+        */
+        const dates = filterDatesByNameAndMonth(name, time, TunrsDates)
+        setCountDays(countList(dates))
+    }, [name, time])
+    
+    const labels = Object.keys(countDays)
+    const data = Object.values(countDays)
+
+    const datas = {
+        labels: labels,
+        datasets: [{
+            label: 'Turnos en el Tiempo',
+            data: data,
+            borderColor: 'rgb(75, 192, 192)',
+            pointBackgroundColor: 'rgba(75, 132, 255)',
+            tension: 0.3
+        }]
+    };
+
+    return (
+        <div className='flex flex-row w-[85%] p-10 gap-5 items-center'>
+            <div className="flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[70%] h-auto">
+                <h4 className='text-white'>Cantidad de Turnos Tomados por Fecha</h4>
+                <Line data={datas} options={options}/>
+            </div>
+            <p className='text-white w-52'>
+                En esta grafica podras encontrar el numero de turnos tomados por dia a nivel general o en cada una de las sucursales.
+                En la cual se podra determinar que dias y que fechas del mes presentamos mayor cantidad de visitas de nuestros asociados.
+            </p>
+        </div>
+    )
+}
+
 function countList(list) {
     return list.reduce((acc, cur) => {
         if (acc[cur.date]) {
@@ -41,40 +85,3 @@ function filterDatesByNameAndMonth(name, time, list) {
     }
     return name === "all" ? newDates : newDates.filter((turn) => turn.city === name);
  }
-
-export default function NumberTurns({ name, time }) {
-
-    const [turns, setTurns] = useState([])
-    const [countDays, setCountDays] = useState([])
-
-    useEffect(() => {
-        async function loadTurns() {
-            const res = await getAllTurns()
-            setTurns(res.data)
-        }
-        loadTurns()
-        const dates = filterDatesByNameAndMonth(name, time, turns)
-        setCountDays(countList(dates))
-    }, [name, time])
-    
-    const labels = Object.keys(countDays)
-    const data = Object.values(countDays)
-
-    const datas = {
-        labels: labels,
-        datasets: [{
-            label: 'Turnos en el Tiempo',
-            data: data,
-            borderColor: 'rgb(75, 192, 192)',
-            pointBackgroundColor: 'rgba(75, 132, 255)',
-            tension: 0.3
-        }]
-    };
-
-    return (
-        <div className="flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[70%] h-auto">
-            <h4 className='text-white'>Cantidad de Turnos Tomados por Fecha</h4>
-            <Line data={datas} options={options}/>
-        </div>
-    )
-}

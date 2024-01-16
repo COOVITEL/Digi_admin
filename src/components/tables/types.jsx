@@ -8,7 +8,7 @@ import { getAllTurns } from '@/pages/api/turns';
 // Create new GridExample component
 export const GridExample = () => {
   // Row Data: The data to be displayed.
-  const [rowData, setRowData] = useState([]);
+  const [rowData, setRowData] = useState(TunrsDates);
 
   // Column Definitions: Defines & controls grid columns.
   const [colDefs, setColDefs] = useState([
@@ -33,11 +33,14 @@ export const GridExample = () => {
   ]);
 
   useEffect(() => {
+    /*
     async function loadTurns() {
       const res = await getAllTurns()
       setRowData(res.data)
     }
     loadTurns()
+    */
+    setRowData(TunrsDates)
   }, [])
 
   const defaultColDef = useMemo(() => ({filter: true}))
@@ -46,7 +49,7 @@ export const GridExample = () => {
   return (
     <div className='w-full h-full flex items-center justify-center'>
       <div className={"ag-theme-quartz"} style={{ width: '90%', height: '80%' }}>
-        <h4 className='text-white p-5'>
+        <h4 className='text-white p-5 text-center'>
           Puedes encontrar todos los turnos tomados por nuestros asociados, puedes filtrarlos por numero de cedula, sucursal, telefono entro otros.
         </h4>
         <AgGridReact rowData={rowData} columnDefs={colDefs} defaultColDef={defaultColDef} pagination={true}/>

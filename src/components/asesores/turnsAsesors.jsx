@@ -80,9 +80,14 @@ export default function NumberAsesors({ name, time}) {
     }
 
     return (
-        <div className="flex flex-col justify-center items-center border-2 p-5 mt-28 rounded-lg w-[65%] h-auto">
-            <h4 className='text-white font-bold'>Cantidad de turnos tomados por cada Asesor</h4>
-            <Bar data={data} options={optionsAsesors}/>
+        <div className="w-full flex flex-row items-center gap-5 p-10">
+            <p className="text-white w-52 font-light">
+                En esta grafica podemos encontrar el numero de turnos tomados por cada uno de nuestros asesores en su sucursal.
+            </p>
+            <div className="flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[70%] h-auto">
+                <h4 className='text-white font-bold'>Cantidad de turnos tomados por cada Asesor</h4>
+                <Bar data={data} options={optionsAsesors}/>
+            </div>
         </div>
     )
 }

@@ -11,11 +11,13 @@ export default function GrafficTypesScores() {
     const [turns, setTurns] = useState([])
 
     useEffect(() => {
-        async function loadTurns() {
+        /*async function loadTurns() {
             const res = await getAllTurns()
             setTurns(res.data)
         }
         loadTurns()
+        */
+       setTurns(TunrsDates)
     }, [])
 
     const Excelente = turns.filter((turn) => turn.score_service == "Excelente").length

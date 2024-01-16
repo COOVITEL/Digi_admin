@@ -55,9 +55,14 @@ export default function TimeScore({name, time}) {
     };
 
     return (
-        <div className="flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[800px] h-auto">
-            <h4 className='text-white font-bold'>Calificación sobre el tiempo de Atención</h4>
-            <Bar data={data} options={optionsAsesors}/>
+        <div className="w-full flex flex-row items-center gap-5 p-10">
+            <div className="flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[800px] h-auto">
+                <h4 className='text-white font-bold'>Calificación sobre el Tiempo de Atención</h4>
+                <Bar data={data} options={optionsAsesors}/>
+            </div>
+            <p className='text-white font-light'>
+                Calificaciones dadas por nuestros asociados en base a su tiempo de atencion y de espera en nuestras oficinas.
+            </p>
         </div>
     )
 }

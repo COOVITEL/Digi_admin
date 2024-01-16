@@ -1,6 +1,6 @@
 import { Chart as ChartJS, CategoryScale, PointElement, ArcElement, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import { Pie } from "react-chartjs-2";
-import { TunrsDates } from "@/pages/api/dates";
+import { TunrsDates} from "@/pages/api/dates";
 import { useEffect, useState } from 'react';
 import { getAllTurns } from '@/pages/api/turns';
 
@@ -11,11 +11,12 @@ export default function GrafficScores() {
     const [turns, setTurns] = useState([])
 
     useEffect(() => {
-        async function loadTurns() {
+        /*async function loadTurns() {
             const res = await getAllTurns()
             setTurns(res.data)
         }
-        loadTurns()
+        loadTurns()*/
+        setTurns(TunrsDates)
     }, [])
 
     const empty = turns.filter((turn) => turn.score_time === "empty" && turn.state === "finished").length

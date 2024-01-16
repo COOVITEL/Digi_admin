@@ -157,17 +157,23 @@ export default function TimesAwait({name, time}) {
     ]
 
     return (
-        <div className='flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[67%] h-auto'>
-            <h4 className='text-white font-bold'>Tiempo de Espera en {title}</h4>
-            <Line data={datas} options={options}/> 
-            <div className='flex flex-row gap-16 pt-4'>
-                {names.map((name, index) => (
-                    <div className='flex flex-col gap-3'>
-                        <h4 className={`${colorsOptions[index][0]} text-sm text-center`}>{name}</h4>
-                        <h4 className={`${colorsOptions[index][1]} text-sm text-center`}>Espera promedio:  {averageTimeAwait[index].toFixed(2)} Min</h4>
-                        <h4 className={`${colorsOptions[index][2]} text-sm text-center`}>Atencion promedio:  {averageTimeAtten[index].toFixed(2)} Min</h4> 
-                    </div>
-                ))}
+        <div className="flex flex-row items-center w-full p-10">
+            <p className="text-white p-5 w-64">
+                Es muy importante conocer los tiempos de atencion brindados por cada uno de nuestros asesores.
+                Por lo cual tenemos los tiempos promedio de espera y atención de cada uno, en cada una de nuestras sucursales.
+            </p>
+            <div className='flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[67%] h-auto'>
+                <h4 className='text-white font-bold'>Tiempo de Espera en {title}</h4>
+                <Line data={datas} options={options}/> 
+                <div className='flex flex-row gap-16 pt-4'>
+                    {names.map((name, index) => (
+                        <div className='flex flex-col gap-3'>
+                            <h4 className={`${colorsOptions[index][0]} text-sm text-center`}>{name}</h4>
+                            <h4 className={`${colorsOptions[index][1]} text-sm text-center`}>Espera promedio:  {averageTimeAwait[index].toFixed(2)} Min</h4>
+                            <h4 className={`${colorsOptions[index][2]} text-sm text-center`}>Atencion promedio:  {averageTimeAtten[index].toFixed(2)} Min</h4> 
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     )

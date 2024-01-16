@@ -31,6 +31,10 @@ export default function NavAsesors() {
                     <button className={currentTime === 2 ? "text-white text-xl" : "text-zinc-400 hover:scale-110 hover:text-white"} onClick={() => handleClick(currentName, 2)}>Ultimos 3 meses</button>
                 </ul>
             </nav>
+            <h2 className="text-white mt-36">
+                Es importante conocer el servicio y la antencion brindada de cada uno de nuestros asesores.
+            </h2>
+            <h3 className="text-white">Por lo que acontinuación encontraremos un analisis y datos obtenidos por cada uno de ellos en cada una de sus sucursales.</h3>
             <NumberAsesors name={currentName} time={currentTime}/>
             <TypesScores name={currentName} time={currentTime}/>
             <TimesAwaitAsesors name={currentName} time={currentTime}/>

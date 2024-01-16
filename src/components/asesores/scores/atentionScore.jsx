@@ -40,9 +40,14 @@ export default function AttentionScore({name, time}) {
     };
 
     return (
-        <div className="flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[800px] h-auto">
-            <h4 className='text-white font-bold'>Calificación sobre el tiempo de Atención</h4>
-            <Bar data={data} options={optionsAsesors}/>
+        <div className="w-full flex flex-row items-center gap-5 p-10">
+            <p className="text-white w-52 font-light">
+                Evaluamos si la solicitud realizada por nuestros <strong className='font-bold'>asociados</strong> fue resuelta por nuestros <strong className='font-bold'>asesores</strong>.
+            </p>
+            <div className="flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[800px] h-auto">
+                <h4 className='text-white font-bold'>Calificación de solución de la Solicitud</h4>
+                <Bar data={data} options={optionsAsesors}/>
+            </div>
         </div>
     )
 }

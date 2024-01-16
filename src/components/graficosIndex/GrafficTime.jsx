@@ -12,11 +12,12 @@ export default function AllTime() {
     const [turns, setTurns] = useState([])
 
     useEffect(() => {
-        async function loadTurns() {
+        /*async function loadTurns() {
             const res = await getAllTurns()
             setTurns(res.data)
         }
-        loadTurns()
+        loadTurns()*/
+        setTurns(TunrsDates)
     }, [])
 
     const days = turns.reduce((acc, cur) => {

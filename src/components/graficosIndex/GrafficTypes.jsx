@@ -12,11 +12,12 @@ export default function GrafficTypes() {
     const [turns, setTurns] = useState([])
 
     useEffect(() => {
-        async function loadTurns() {
+        /*async function loadTurns() {
             const res = await getAllTurns()
             setTurns(res.data)
         }
-        loadTurns()
+        loadTurns()*/
+        setTurns(TunrsDates)
     }, [])
 
     const caj = turns.filter((type) => type.type2 === "Caja").length

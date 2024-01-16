@@ -13,12 +13,14 @@ export default function StateScore({name, time}) {
     const [turns, setTurns] = useState([])
 
     useEffect(() => {
+        /*
         async function loadTurns() {
             const res = await getAllTurns()
             setTurns(res.data)
         }
         loadTurns()
-        CountDates(turns, name, time)
+        */
+        CountDates(TunrsDates, name, time)
     }, [name, time]);
 
     function CountDates(list, name, time) {
@@ -81,32 +83,41 @@ export default function StateScore({name, time}) {
     const options = {
         plugins: {
             legend: {
-                display: false
+                display: true,
+                labels: {
+                    color: 'white'
+                }
             }
         }
     }
     return (
-        <div className="flex flex-col justify-center items-center border-2 p-5 mt-20 rounded-lg w-[60%] h-auto">
-            <h5 className="text-white pb-3 text-sm">Estados de Calificación de Turno en {title}</h5>
-            <div className='w-[250px]'>
-                <Pie data={data} options={options}/>
+        <div className='flex flex-row w-[85%] p-10 gap-5 items-center'>
+            <p className='text-white w-52'>
+                Conocer los canales de calificacion de nuestro servicio usados por nuestros asociados es de gran importancia.
+                Es por esto que en esta tabla podras encontrar los diferentes pocentajes y cantidad de turnos calificados por nuestros asociados.
+            </p>
+            <div className="flex flex-col justify-center items-center border-2 p-5 mt-20 rounded-lg w-[70%]">
+                <h5 className="text-white pb-3 text-sm">Estados de Calificación de Turno en {title}</h5>
+                <div className='w-[380px]'>
+                    <Pie data={data} options={options}/>
+                </div>
+                <table className='text-white mt-8'>
+                    <tr>
+                        <th className='p-2 text-center text-sm'>Estado de Turno</th>
+                        {types.map((type, index) => (
+                            <th key={index} className='p-2 text-center text-sm'>{type}</th>
+                        ))}
+                    </tr>
+                    <tr>
+                        <td className='p-2 text-center text-sm'>Procentaje</td>
+                        <td className='p-2 text-center text-sm'>{porceEmpty} %</td>
+                        <td className='p-2 text-center text-sm'>{porceSuc} %</td>
+                        <td className='p-2 text-center text-sm'>{porceSms} %</td>
+                        <td className='p-2 text-center text-sm'>{porceCall} %</td>
+                        <td className='p-2 text-center text-sm'>{porceNot} %</td>
+                    </tr>
+                </table>
             </div>
-            <table className='text-white mt-8'>
-                <tr>
-                    <th className='p-2 text-center text-sm'>Estado de Turno</th>
-                    {types.map((type, index) => (
-                        <th key={index} className='p-2 text-center text-sm'>{type}</th>
-                    ))}
-                </tr>
-                <tr>
-                    <td className='p-2 text-center text-sm'>Procentaje</td>
-                    <td className='p-2 text-center text-sm'>{porceEmpty} %</td>
-                    <td className='p-2 text-center text-sm'>{porceSuc} %</td>
-                    <td className='p-2 text-center text-sm'>{porceSms} %</td>
-                    <td className='p-2 text-center text-sm'>{porceCall} %</td>
-                    <td className='p-2 text-center text-sm'>{porceNot} %</td>
-                </tr>
-            </table>
         </div>
     )
 }
