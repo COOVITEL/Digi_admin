@@ -45,14 +45,14 @@ export default function RecommentScore({name, time}) {
     };
 
     return (
-        <div className="w-full flex flex-row items-center gap-5 p-10">
-            <div className="flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[800px] h-auto">
+        <div className="w-full flex flex-col items-center gap-5 p-10">
+            <p className="text-white font-light">
+                Queremos saber si nuestros <strong className='font-bold'>Asociados recomendarian</strong> a un amigo o conocido a ser parte de nuestra familia.
+            </p>
+            <div className="flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[95%]">
                 <h4 className='text-white font-bold'>Recomendación de nuestros Asociados a un amigo o conocido.</h4>
                 <Bar data={data} options={optionsAsesors}/>
             </div>
-            <p className="text-white w-52 font-light">
-                Queremos saber si nuestros Asociados recomendarian a un amigo o conocido a ser parte de nuestra familia.
-            </p>
         </div>
     )
 }

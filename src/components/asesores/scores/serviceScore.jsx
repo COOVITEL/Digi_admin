@@ -55,11 +55,11 @@ export default function ServiceScore({name, time}) {
     };
 
     return (
-        <div className="w-full flex flex-row items-center gap-5 p-10">
-            <p className="text-white w-56 font-light">
+        <div className="w-full flex flex-col items-center gap-5 p-10">
+            <p className="text-white font-light">
                 Calificaciones del <strong className='font-bold'>Servicio</strong> brindado por nuestros <strong className='font-bold'>asesores</strong> a nuestros <strong className='font-bold'>asociados</strong>.
             </p>
-            <div className="flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[800px] h-auto">
+            <div className="flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[95%] h-auto">
                 <h4 className='text-white font-bold'>Calificación sobre el Servicio Brindado</h4>
                 <Bar data={data} options={optionsAsesors}/>
             </div>

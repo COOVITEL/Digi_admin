@@ -62,7 +62,6 @@ export default function NumberAsesors({ name, time}) {
                 'rgba(12, 22, 34, 0.5)',
                 'rgba(45, 112, 232, 0.5)',
                 'rgba(220, 19, 0, 0.5)',
-                'rgba(255, 99, 132, 0.5)',
                 'rgba(22, 67, 111, 0.5)',
                 ],
                 borderColor: [
@@ -80,11 +79,11 @@ export default function NumberAsesors({ name, time}) {
     }
 
     return (
-        <div className="w-full flex flex-row items-center gap-5 p-10">
-            <p className="text-white w-52 font-light">
+        <div className="w-full flex flex-col items-center gap-5 p-10">
+            <p className="text-white w-98 font-light">
                 En esta grafica podemos encontrar el numero de turnos tomados por cada uno de nuestros asesores en su sucursal.
             </p>
-            <div className="flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[70%] h-auto">
+            <div className="flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[90%] h-auto">
                 <h4 className='text-white font-bold'>Cantidad de turnos tomados por cada Asesor</h4>
                 <Bar data={data} options={optionsAsesors}/>
             </div>
