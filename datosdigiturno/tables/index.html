@@ -7,10 +7,11 @@
       content="Datos Digiturno - En esta web podras encontrar los datos recopilados en las diferentes sucursales de Coovitel."
     />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="logoup.png" />
+    <link rel="icon" type="image/svg+xml" href="/datosdigiturno/logoup.png" />
     <meta name="generator" content="Astro v3.6.0" />
-    <title>Admin Digiturno</title>
-    <link rel="stylesheet" href="_astro/asesores.ee9d0c35.css" />
+    <title>Tabla de Datos</title>
+    <link rel="stylesheet" href="/datosdigiturno/_astro/asesores.7b0069fd.css" />
+    <link rel="stylesheet" href="/datosdigiturno/_astro/tables.f9892f7f.css" />
   </head>
   <body data-astro-cid-sckkx6r4>
     <div id="app" class="relative h-screen p-2 gap-2" data-astro-cid-sckkx6r4>
@@ -23,7 +24,7 @@
             <li class="list-none hover:scale-105 py-1">
               <a
                 class="flex gap-2 text-zinc-400 hover:text-zinc-100 items-center py-3 px-5 my-5 font-medium transition duration-300"
-                href="/DatosDigiturno"
+                href="/datosdigiturno"
               >
                 <svg
                   role="img"
@@ -43,7 +44,7 @@
             <li class="list-none hover:scale-105 py-1">
               <a
                 class="flex gap-2 text-zinc-400 hover:text-zinc-100 items-center py-3 px-5 my-5 font-medium transition duration-300"
-                href="/DatosDigiturno/tables"
+                href="/datosdigiturno/tables"
               >
                 <svg
                   role="img"
@@ -67,7 +68,7 @@
             <li class="list-none hover:scale-105 py-1">
               <a
                 class="flex gap-2 text-zinc-400 hover:text-zinc-100 items-center py-3 px-5 my-5 font-medium transition duration-300"
-                href="/DatosDigiturno/graffics"
+                href="/datosdigiturno/graffics"
               >
                 <svg height="22" width="22" fill="none" viewBox="0 0 18 16">
                   <path
@@ -84,7 +85,7 @@
             <li class="list-none hover:scale-105 py-1">
               <a
                 class="flex gap-2 text-zinc-400 hover:text-zinc-100 items-center py-3 px-5 my-5 font-medium transition duration-300"
-                href="/DatosDigiturno/asesores"
+                href="/datosdigiturno/asesores"
               >
                 <svg width="30" height="30" fill="none" viewBox="0 0 18 18">
                   <path
@@ -100,7 +101,7 @@
             <li class="list-none hover:scale-105 py-1">
               <a
                 class="flex gap-2 text-zinc-400 hover:text-zinc-100 items-center py-3 px-5 my-5 font-medium transition duration-300"
-                href="/DatosDigiturno/datos.xlsx"
+                href="/datosdigiturno/datos.xlsx"
               >
                 <svg height="27" width="27" fill="none" viewBox="0 0 20 19">
                   <path
@@ -121,11 +122,11 @@
         class="[grid-area:main] rounded-lg bg-zinc-800 overflow-y-auto w-full"
         data-astro-cid-sckkx6r4
       >
-        <div class="flex flex-col p-5">
-          <h1 class="text-white text-2xl">
-            Datos y Estadisticas DigiTurno, Bienvenido!
-          </h1>
-          <div class="flex flex-wrap gap-5 m-6">
+        <div
+          class="w-full h-full flex flex-col p-5 justify-center items-center"
+        >
+          <h1 class="text-white text-2xl">Tablas de Datos Digiturno</h1>
+          <div class="h-full w-full flex flex-col justify-center items-center">
             <style>
               astro-island,
               astro-slot,
@@ -140,8 +141,8 @@
                     await t()
                   )();
                 };
-                (self.Astro || (self.Astro = {})).only = e;
-                window.dispatchEvent(new Event("astro:only"));
+                (self.Astro || (self.Astro = {})).load = e;
+                window.dispatchEvent(new Event("astro:load"));
               })();
               (() => {
                 var b = Object.defineProperty;
@@ -350,55 +351,28 @@
               })();
             </script>
             <astro-island
-              uid="ZePDfE"
-              component-url="/DatosDigiturno/_astro/GrafficSucursales.825f97b7.js"
-              component-export="default"
-              renderer-url="/DatosDigiturno/_astro/client.27839267.js"
+              uid="14TPO"
+              prefix="r0"
+              component-url="/datosdigiturno/_astro/types.b60f21af.js"
+              component-export="GridExample"
+              renderer-url="/datosdigiturno/_astro/client.27839267.js"
               props="{}"
               ssr=""
-              client="only"
-              opts='{"name":"Graffic","value":true}'
-            ></astro-island>
-            <astro-island
-              uid="25lFwT"
-              component-url="/DatosDigiturno/_astro/GrafficTypes.e38d8271.js"
-              component-export="default"
-              renderer-url="/DatosDigiturno/_astro/client.27839267.js"
-              props="{}"
-              ssr=""
-              client="only"
-              opts='{"name":"GrafficTypes","value":true}'
-            ></astro-island>
-            <astro-island
-              uid="Lbde5"
-              component-url="/DatosDigiturno/_astro/GrafficScores.090f61a6.js"
-              component-export="default"
-              renderer-url="/DatosDigiturno/_astro/client.27839267.js"
-              props="{}"
-              ssr=""
-              client="only"
-              opts='{"name":"GrafficScores","value":true}'
-            ></astro-island>
-            <astro-island
-              uid="ZkBEE9"
-              component-url="/DatosDigiturno/_astro/GrafficTime.3c92fbdb.js"
-              component-export="default"
-              renderer-url="/DatosDigiturno/_astro/client.27839267.js"
-              props="{}"
-              ssr=""
-              client="only"
-              opts='{"name":"AllTime","value":true}'
-            ></astro-island>
-            <astro-island
-              uid="ZILaTR"
-              component-url="/DatosDigiturno/_astro/GrafficTypesScores.fd07a041.js"
-              component-export="default"
-              renderer-url="/DatosDigiturno/_astro/client.27839267.js"
-              props="{}"
-              ssr=""
-              client="only"
-              opts='{"name":"GrafficTypesScores","value":true}'
-            ></astro-island>
+              client="load"
+              opts='{"name":"GridExample","value":true}'
+              await-children=""
+              ><div class="w-full h-full flex items-center justify-center">
+                <div class="ag-theme-quartz" style="width: 90%; height: 80%">
+                  <h4 class="text-white p-5 text-center">
+                    Puedes encontrar todos los turnos tomados por nuestros
+                    asociados, puedes filtrarlos por numero de cedula, sucursal,
+                    telefono entro otros.
+                  </h4>
+                  <div style="height: 100%"></div>
+                </div>
+              </div>
+              <!--astro:end--></astro-island
+            >
           </div>
         </div>
       </main>
