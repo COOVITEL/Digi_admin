@@ -12,12 +12,11 @@ export default function AllTime() {
     const [turns, setTurns] = useState([])
 
     useEffect(() => {
-        /*async function loadTurns() {
+        async function loadTurns() {
             const res = await getAllTurns()
             setTurns(res.data)
         }
-        loadTurns()*/
-        setTurns(TunrsDates)
+        loadTurns()
     }, [])
 
     const days = turns.reduce((acc, cur) => {
@@ -48,7 +47,7 @@ export default function AllTime() {
                 <h4 className='text-white'>Cantidad de Turnos por Fecha</h4>
                 <Line data={datas} options={options}/>
             </div>
-            <p className='text-white w-52'>
+            <p className='text-white w-52 text-center'>
                 Numero de turnos tomados en todas las sucursales por fecha,
                 esto nos permitira conocer que dias y que fechas son las mas visitadas por nuestros asociados.
             </p>

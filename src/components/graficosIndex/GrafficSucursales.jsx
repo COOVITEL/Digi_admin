@@ -11,12 +11,11 @@ export default function Graffic () {
 
   const [turns, setTurns] = useState([])
   useEffect(() => {
-    /*async function loadTurns() {
+    async function loadTurns() {
         const res = await getAllTurns()
         setTurns(res.data)
     }
-    loadTurns()*/
-    setTurns(TunrsDates)
+    loadTurns()
   }, [])
 
   const numNames = turns.reduce((acc, cur) => {
@@ -39,12 +38,24 @@ export default function Graffic () {
         backgroundColor: [
           'rgba(228, 65, 53, 0.5)',
           'rgba(141, 90, 204, 0.5)',
-          'rgba(121, 151, 227, 0.5)'
+          'rgba(121, 151, 227, 0.5)',
+          'rgba(72, 209, 0, 0.5)',
+          'rgba(220, 19, 0, 0.5)',
+          'rgba(255, 99, 132, 0.5)',
+          'rgba(183, 46, 168, 0.5)',
+          'rgba(72, 209, 168, 0.5)',
+          'rgba(45, 180, 49, 0.5)',
         ],
         borderColor: [
           'rgba(228, 65, 53)',
           'rgba(141, 90, 204)',
           'rgba(121, 151, 227)',
+          'rgba(72, 209, 0)',
+          'rgba(220, 19, 0)',
+          'rgba(255, 99, 132)',
+          'rgba(183, 46, 168)',
+          'rgba(72, 209, 168)',
+          'rgba(45, 180, 49)',
         ],
         borderWidth: 2,
         hoverOffset: 5
@@ -53,7 +64,7 @@ export default function Graffic () {
       
   return (
     <div className="flex flex-row items-center gap-5 p-10">
-      <p className="text-white w-52">
+      <p className="text-white w-52 text-center">
         Numero de turnos tomados en cada sucursal, por nuestros asociados.
       </p>
       <div className="flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[800px] h-[400px]">

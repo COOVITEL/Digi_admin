@@ -118,7 +118,6 @@ function filterDatesByNameAndMonth(name, time) {
   }
  
   function countsAsesors(name, listTime, ListAsesors) {
- 
      let datesTimesAsesors = [];
      for (let asesor of ListAsesors) {
         let datesAsesor = {
@@ -136,28 +135,26 @@ function filterDatesByNameAndMonth(name, time) {
      return datesTimesAsesors;
  }
  
- function createDatasets(labels, dataAwait, dataAtten, names) {         
- 
-     let dataSets = [];
- 
-     for (let x = 0; x < dataAwait.length; x++) {
-         dataSets.push({
-             label: `Tiempo de espera ${names[x]}`,
-             data: dataAwait[x],
-             borderColor: ListColorsWeak[x],
-             pointBackgroundColor: ListColorsWeak[x],
-             tension: 0.3,
-         },)
-         dataSets.push({
-             label: `Tiempo de Atención ${names[x]}`,
-             data: dataAtten[x],
-             borderColor: ListColorsWeak[x],
-             pointBackgroundColor: ListColorsWeak[x],
-             tension: 0.3,
-         },)
-     }
-     return {
-         labels: labels,
-         datasets: dataSets
-     };
-  }
+ function createDatasets(labels, dataAwait, dataAtten, names) { 
+    let dataSets = [];
+    for (let x = 0; x < dataAtten.length; x++) {
+        dataSets.push({
+            label: `Tiempo de espera ${names[x]}`,
+            data: dataAwait[x],
+            borderColor: ListColorsWeak[x],
+            pointBackgroundColor: ListColorsWeak[x],
+            tension: 0.3,
+        },)
+        dataSets.push({
+            label: `Tiempo de Atención ${names[x]}`,
+            data: dataAtten[x],
+            borderColor: ListColorsWeak[x],
+            pointBackgroundColor: ListColorsWeak[x],
+            tension: 0.3,
+        },)
+    }
+    return {
+        labels: labels,
+        datasets: dataSets
+    };
+}

@@ -11,13 +11,11 @@ export default function GrafficTypesScores() {
     const [turns, setTurns] = useState([])
 
     useEffect(() => {
-        /*async function loadTurns() {
+        async function loadTurns() {
             const res = await getAllTurns()
             setTurns(res.data)
         }
         loadTurns()
-        */
-       setTurns(TunrsDates)
     }, [])
 
     const Excelente = turns.filter((turn) => turn.score_service == "Excelente").length
@@ -52,10 +50,10 @@ export default function GrafficTypesScores() {
     }
     return (
         <div className='flex flex-row items-center gap-5 p-10'>
-            <p className='text-white w-52'>
-            La atención a nuestros asosciados es de vital importancia para nosotros,
-            acontinuacion podemos observar la calificacion de nuestro servicio brindado hacia nuestros
-            asociados a nivel general de todas nuestras sucursales.
+            <p className='text-white w-64 text-center'>
+                La atención a nuestros asosciados es de vital importancia para nosotros,
+                acontinuacion podemos observar la calificacion de nuestro servicio brindado hacia nuestros
+                asociados a nivel general de todas nuestras sucursales.
             </p>
             <div className="flex flex-col justify-center items-center border-2 p-10 rounded-lg w-[700px] h-[520px]">
                 <h5 className="text-white pb-3 text-sm">Calificacion Servicio Brindado</h5>

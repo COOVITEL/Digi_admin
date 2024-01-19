@@ -8,7 +8,7 @@ ChartJS.register(CategoryScale, PointElement, ArcElement, LinearScale, BarElemen
 
 export default function Types({ name, time }) {
 
-    const types = ["Caja", "Crédito", "Afiliación", "Ahorro", "Seguros", "Auxilios", "Estado", "Otros"]
+    const types = ["Caja", "Crédito", "Afiliación", "Ahorro", "Seguros", "Auxilios", "Estado", "Otros", "Obsequio"]
 
 
     const [turns, setTurns] = useState([])
@@ -79,26 +79,28 @@ export default function Types({ name, time }) {
             }],
     }
     return (
-        <div className='flex flex-row w-[85%] p-10 pb-20 gap-5 items-center'>
-            <p className='text-white w-52'>
+        <div className='flex flex-row w-[95%] p-10 pb-20 gap-5 items-center'>
+            <p className='text-white w-52 text-center'>
                 Tipos de turnos tomados por nuestros asociados, en cada una de las sucursales.
                 Durante el mes actual, el mes pasado o durante los 3 ultimos meses.
             </p>
             <div className="flex flex-col justify-center items-center border-2 p-5 mt-5 rounded-lg">
                 <Bar data={data} options={options}/>
                 <table className='text-white mt-8'>
-                    <tr>
-                        <th className='p-2 text-center'>Tipo Turno</th>
-                        {types.map((type, index) => (
-                            <th key={index} className='p-2 text-center'>{type}</th>
-                        ))}
-                    </tr>
-                    <tr>
-                        <td className='p-2 text-center'>Procentaje</td>
-                        {porcentajes.map((porcen, index) => (
-                            <td key={index} className='text-center'>{porcen}%</td>
-                        ))}
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <th className='p-2 text-center'>Tipo Turno</th>
+                            {types.map((type, index) => (
+                                <th key={index} className='p-2 text-center'>{type}</th>
+                            ))}
+                        </tr>
+                        <tr>
+                            <td className='p-2 text-center'>Procentaje</td>
+                            {porcentajes.map((porcen, index) => (
+                                <td key={index} className='text-center'>{porcen}%</td>
+                            ))}
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>

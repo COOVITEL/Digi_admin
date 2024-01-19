@@ -38,12 +38,12 @@ export default function NumberTurns({ name, time }) {
     };
 
     return (
-        <div className='flex flex-row w-[85%] p-10 gap-5 items-center'>
-            <div className="flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[70%] h-auto">
+        <div className='flex flex-row w-[95%] p-10 gap-5 items-center'>
+            <div className="flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[95%]">
                 <h4 className='text-white'>Cantidad de Turnos Tomados por Fecha</h4>
                 <Line data={datas} options={options}/>
             </div>
-            <p className='text-white w-52'>
+            <p className='text-white w-52 text-center'>
                 En esta grafica podras encontrar el numero de turnos tomados por dia a nivel general o en cada una de las sucursales.
                 En la cual se podra determinar que dias y que fechas del mes presentamos mayor cantidad de visitas de nuestros asociados.
             </p>

@@ -12,12 +12,11 @@ export default function GrafficTypes() {
     const [turns, setTurns] = useState([])
 
     useEffect(() => {
-        /*async function loadTurns() {
+        async function loadTurns() {
             const res = await getAllTurns()
             setTurns(res.data)
         }
-        loadTurns()*/
-        setTurns(TunrsDates)
+        loadTurns()
     }, [])
 
     const caj = turns.filter((type) => type.type2 === "Caja").length
@@ -28,11 +27,12 @@ export default function GrafficTypes() {
     const aux = turns.filter((type) => type.type2 === "Auxilios").length
     const est = turns.filter((type) => type.type2 === "Estado").length
     const otr = turns.filter((type) => type.type2 === "Otros").length
+    const obs = turns.filter((type) => type.type2 === "Obsequio").length
 
     const data = {
-        labels: ["Caja", "Crédito", "Afiliación", "Ahorro", "Seguros", "Auxilios", "Estado de cuenta", "Otros"],
+        labels: ["Caja", "Crédito", "Afiliación", "Ahorro", "Seguros", "Auxilios", "Estado de cuenta", "Otros", "Obsequio"],
         datasets: [{
-            data: [caj, cre,  afi, aho, seg, aux, est, otr],
+            data: [caj, cre,  afi, aho, seg, aux, est, otr, obs],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.5)',
                 'rgba(183, 46, 168, 0.5)',
@@ -42,6 +42,7 @@ export default function GrafficTypes() {
                 'rgba(255, 99, 132, 0.5)',
                 'rgba(183, 46, 168, 0.5)',
                 'rgba(72, 209, 168, 0.5)',
+                'rgba(45, 180, 49, 0.5)',
               ],
               borderColor: [
                 'rgba(255, 99, 132)',
@@ -52,6 +53,7 @@ export default function GrafficTypes() {
                 'rgba(255, 99, 132)',
                 'rgba(183, 46, 168)',
                 'rgba(72, 209, 168)',
+                'rgba(45, 180, 49)',
               ],
               borderWidth: 2,
             }],
@@ -63,7 +65,7 @@ export default function GrafficTypes() {
                 <h4 className='text-white'>Tipos de Turnos Tomados en las Sucursales</h4>
                 <Bar data={data} options={options}/>
             </div>
-            <p className='text-white w-[200px]'>
+            <p className='text-white w-[200px] text-center'>
                 Tipo y numero de turnos tomados en todas nuestras sucursales.
             </p>
         </div>

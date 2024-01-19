@@ -5,12 +5,9 @@ import { useEffect, useMemo, useState } from 'react';
 import { TunrsDates } from '@/pages/api/dates';
 import { getAllTurns } from '@/pages/api/turns';
 
-// Create new GridExample component
 export const GridExample = () => {
-  // Row Data: The data to be displayed.
   const [rowData, setRowData] = useState(TunrsDates);
 
-  // Column Definitions: Defines & controls grid columns.
   const [colDefs, setColDefs] = useState([
     { field: 'city'},
     { field: 'c_number' },
@@ -33,22 +30,18 @@ export const GridExample = () => {
   ]);
 
   useEffect(() => {
-    /*
     async function loadTurns() {
       const res = await getAllTurns()
       setRowData(res.data)
     }
     loadTurns()
-    */
-    setRowData(TunrsDates)
   }, [])
 
   const defaultColDef = useMemo(() => ({filter: true}))
 
-  // Container: Defines the grid's theme & dimensions.
   return (
     <div className='w-full h-full flex items-center justify-center'>
-      <div className={"ag-theme-quartz"} style={{ width: '90%', height: '80%' }}>
+      <div className={"ag-theme-quartz"} style={{ width: '95%', height: '80%' }}>
         <h4 className='text-white p-5 text-center'>
           Puedes encontrar todos los turnos tomados por nuestros asociados, puedes filtrarlos por numero de cedula, sucursal, telefono entro otros.
         </h4>

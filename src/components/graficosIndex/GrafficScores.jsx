@@ -11,12 +11,11 @@ export default function GrafficScores() {
     const [turns, setTurns] = useState([])
 
     useEffect(() => {
-        /*async function loadTurns() {
+        async function loadTurns() {
             const res = await getAllTurns()
             setTurns(res.data)
         }
-        loadTurns()*/
-        setTurns(TunrsDates)
+        loadTurns()
     }, [])
 
     const empty = turns.filter((turn) => turn.score_time === "empty" && turn.state === "finished").length
@@ -51,7 +50,7 @@ export default function GrafficScores() {
     }
     return (
         <div className='flex flex-row items-center gap-5 p-10'>
-            <p className='text-white w-52'>
+            <p className='text-white w-52 text-center'>
                 Estado de la calificación de nuestros asociados y tipo de canal de calificaión de nuestro servicio.
                 Junto con el numero de turnos calificados y el canal de su calificación.
             </p>
