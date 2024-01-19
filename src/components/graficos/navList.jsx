@@ -18,7 +18,7 @@ export default function Navbuttons() {
             setTurns(res.data)
         }
         loadTurns()
-    })
+    }, [])
 
     const sucursales = turns.map((city) => city.city)
     const uniqueSuc = [...new Set(sucursales)]

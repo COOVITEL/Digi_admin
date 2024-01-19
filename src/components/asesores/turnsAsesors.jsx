@@ -4,6 +4,7 @@ import { Chart as ChartJS, CategoryScale, PointElement, ArcElement, LinearScale,
 import { TunrsDates } from "@/pages/api/dates"
 import { useEffect, useState } from "react"
 import { optionsAsesors } from "../options";
+import { getAllTurns } from "@/pages/api/turns";
 
 
 ChartJS.register(CategoryScale, PointElement, ArcElement, LinearScale, BarElement, Title, Tooltip, Legend);
@@ -42,10 +43,20 @@ function countTurns(list, turns, name, time) {
 
 export default function NumberAsesors({ name, time}) {
 
-    const [asesors, setAsesors] = useState(countTurns(ListAsesors, TunrsDates, name, time))
+    const [turns, setTurns] = useState([])
 
     useEffect(() => {
-        setAsesors(countTurns(ListAsesors, TunrsDates, name, time))
+        async function loadTurns() {
+            const res = await getAllTurns()
+            setTurns(res.data)
+        }
+        loadTurns()
+    }, [])
+
+    const [asesors, setAsesors] = useState(countTurns(ListAsesors, turns, name, time))
+
+    useEffect(() => {
+        setAsesors(countTurns(ListAsesors, turns, name, time))
     }, [name, time])
 
     const types = asesors.map((ase) => ase.name)

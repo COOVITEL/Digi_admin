@@ -3,6 +3,7 @@ import { TunrsDates } from "@/pages/api/dates";
 import { Bar } from "react-chartjs-2"
 import { options } from "../../options";
 import { useEffect, useState } from 'react';
+import { getAllTurns } from '@/pages/api/turns';
 
 ChartJS.register(CategoryScale, PointElement, ArcElement, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -14,6 +15,15 @@ export default function ScoreOptions({name, time, typeScore, list, param}) {
     }, {}))
     const [porcentajes, setPorcentajes] = useState(types.map((type) => ((counts[type] / TunrsDates.length) * 100).toFixed(2)))
     const [title, setTitle] = useState("Todas las Sucursales")
+    const [turns, setTurns] = useState([])
+
+    useEffect(() => {
+        async function loadTurns() {
+            const res = await getAllTurns()
+            setTurns(res.data)
+        }
+        loadTurns()
+    }, [])
 
     useEffect(() => {
         const date = new Date();
@@ -23,17 +33,17 @@ export default function ScoreOptions({name, time, typeScore, list, param}) {
 
         if (newMonth == 0) {
             year = date.getFullYear() - 1;
-            newDates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) === 12 && Number(turn.date.split('-')[0]) === year);
+            newDates = turns.filter((turn) => Number(turn.date.split("-")[1]) === 12 && Number(turn.date.split('-')[0]) === year);
         } else {
-            newDates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) === newMonth  && Number(turn.date.split('-')[0]) === year);
+            newDates = turns.filter((turn) => Number(turn.date.split("-")[1]) === newMonth  && Number(turn.date.split('-')[0]) === year);
         }
 
         if (time == 2) {
             newMonth = date.getMonth() - 1;
             if (newMonth < 0) {
-                newDates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) >= (12 + newMonth))
+                newDates = turns.filter((turn) => Number(turn.date.split("-")[1]) >= (12 + newMonth))
             } else {
-                newDates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) >= newMonth)
+                newDates = turns.filter((turn) => Number(turn.date.split("-")[1]) >= newMonth)
             }
         }
         

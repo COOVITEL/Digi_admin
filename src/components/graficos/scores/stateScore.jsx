@@ -13,14 +13,15 @@ export default function StateScore({name, time}) {
     const [turns, setTurns] = useState([])
 
     useEffect(() => {
-        /*
         async function loadTurns() {
             const res = await getAllTurns()
             setTurns(res.data)
         }
         loadTurns()
-        */
-        CountDates(TunrsDates, name, time)
+    }, [])
+
+    useEffect(() => {
+        CountDates(turns, name, time)
     }, [name, time]);
 
     function CountDates(list, name, time) {

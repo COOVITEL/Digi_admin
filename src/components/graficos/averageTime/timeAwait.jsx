@@ -3,28 +3,29 @@ import { TunrsDates } from '@/pages/api/dates';
 import { Line } from 'react-chartjs-2'
 import { options } from '../../options';
 import { useEffect, useState } from 'react';
+import { getAllTurns } from '@/pages/api/turns';
 
 ChartJS.register(CategoryScale, LineElement, PointElement, ArcElement, LinearScale, BarElement, Title, Tooltip, Legend);
 
-function filterDatesByNameAndMonth(name, time) {
+function filterDatesByNameAndMonth(name, time, list) {
    const date = new Date();
    let year = date.getFullYear();
    let newMonth = time === 0 ? date.getMonth() + 1 : date.getMonth();
-   let dates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) === newMonth);
+   let dates = list.filter((turn) => Number(turn.date.split("-")[1]) === newMonth);
 
    if (newMonth == 0) {
     year = date.getFullYear() - 1;
-    dates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) === 12 && Number(turn.date.split('-')[0]) === year);
+    dates = list.filter((turn) => Number(turn.date.split("-")[1]) === 12 && Number(turn.date.split('-')[0]) === year);
     } else {
-        dates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) === newMonth  && Number(turn.date.split('-')[0]) === year);
+        dates = list.filter((turn) => Number(turn.date.split("-")[1]) === newMonth  && Number(turn.date.split('-')[0]) === year);
     }
 
     if (time == 2) {
         newMonth = date.getMonth() - 1;
         if (newMonth < 0) {
-            dates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) >= (12 + newMonth))
+            dates = list.filter((turn) => Number(turn.date.split("-")[1]) >= (12 + newMonth))
         } else {
-            dates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) >= newMonth)
+            dates = list.filter((turn) => Number(turn.date.split("-")[1]) >= newMonth)
         }
     }
    return name === "all" ? dates : dates.filter((turn) => turn.city === name);
@@ -75,11 +76,20 @@ function createDatasets(labels, dataAwait, dataAttent) {
 }
 
 export default function TimesAwait({name, time}) {
-   const [listTime, setlistTime] = useState(TunrsDates)
+   const [listTime, setlistTime] = useState([])
    const [title, setTitle] = useState()
+   const [turns, setTurns] = useState([])
+
+    useEffect(() => {
+        async function loadTurns() {
+            const res = await getAllTurns()
+            setTurns(res.data)
+        }
+        loadTurns()
+    }, [])
 
    useEffect(() => {
-       const dates = filterDatesByNameAndMonth(name, time);
+       const dates = filterDatesByNameAndMonth(name, time, turns);
        setlistTime(dates)
        setTitle(name === "all" ? "Todas las Sucursales" : name)
    }, [name, time]);

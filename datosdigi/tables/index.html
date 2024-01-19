@@ -7,10 +7,11 @@
       content="Datos Digiturno - En esta web podras encontrar los datos recopilados en las diferentes sucursales de Coovitel."
     />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="logoup.png" />
+    <link rel="icon" type="image/svg+xml" href="/datosdigi/logoup.png" />
     <meta name="generator" content="Astro v3.6.0" />
-    <title>Admin Digiturno</title>
-    <link rel="stylesheet" href="_astro/asesores.d43ae05e.css" />
+    <title>Tabla de Datos</title>
+    <link rel="stylesheet" href="/datosdigi/_astro/asesores.63b408d4.css" />
+    <link rel="stylesheet" href="/datosdigi/_astro/tables.f9892f7f.css" />
   </head>
   <body data-astro-cid-sckkx6r4>
     <div id="app" class="relative h-screen p-2 gap-2" data-astro-cid-sckkx6r4>
@@ -121,16 +122,13 @@
         class="[grid-area:main] rounded-lg bg-zinc-800 overflow-y-auto w-full"
         data-astro-cid-sckkx6r4
       >
-        <div class="flex flex-col p-5 items-center">
-          <h1 class="text-white text-2xl p-5">
-            Datos y Estadisticas DigiTurno, Bienvenido!
+        <div
+          class="w-full h-full flex flex-col p-5 justify-center items-center"
+        >
+          <h1 class="text-white text-3xl border-b-[3px] p-5">
+            Tablas de Datos Digiturno
           </h1>
-          <p class="text-white p-6">
-            En esta pagina podras encontrar estadisticas, graficas y analisis de
-            los datos recolectados por <strong>Coovitel</strong> en sus
-            diferentes sucursales.
-          </p>
-          <div class="flex flex-col items-center gap-5 m-6">
+          <div class="h-full w-full flex flex-col justify-center items-center">
             <style>
               astro-island,
               astro-slot,
@@ -145,8 +143,8 @@
                     await t()
                   )();
                 };
-                (self.Astro || (self.Astro = {})).only = e;
-                window.dispatchEvent(new Event("astro:only"));
+                (self.Astro || (self.Astro = {})).load = e;
+                window.dispatchEvent(new Event("astro:load"));
               })();
               (() => {
                 var b = Object.defineProperty;
@@ -355,55 +353,28 @@
               })();
             </script>
             <astro-island
-              uid="ZePDfE"
-              component-url="/datosdigi/_astro/GrafficSucursales.be30542d.js"
-              component-export="default"
+              uid="1uod8E"
+              prefix="r0"
+              component-url="/datosdigi/_astro/types.8eb95f35.js"
+              component-export="GridExample"
               renderer-url="/datosdigi/_astro/client.27839267.js"
               props="{}"
               ssr=""
-              client="only"
-              opts='{"name":"Graffic","value":true}'
-            ></astro-island>
-            <astro-island
-              uid="25lFwT"
-              component-url="/datosdigi/_astro/GrafficTypes.2edf0a42.js"
-              component-export="default"
-              renderer-url="/datosdigi/_astro/client.27839267.js"
-              props="{}"
-              ssr=""
-              client="only"
-              opts='{"name":"GrafficTypes","value":true}'
-            ></astro-island>
-            <astro-island
-              uid="Lbde5"
-              component-url="/datosdigi/_astro/GrafficScores.6afeca86.js"
-              component-export="default"
-              renderer-url="/datosdigi/_astro/client.27839267.js"
-              props="{}"
-              ssr=""
-              client="only"
-              opts='{"name":"GrafficScores","value":true}'
-            ></astro-island>
-            <astro-island
-              uid="ZkBEE9"
-              component-url="/datosdigi/_astro/GrafficTime.fe2949c9.js"
-              component-export="default"
-              renderer-url="/datosdigi/_astro/client.27839267.js"
-              props="{}"
-              ssr=""
-              client="only"
-              opts='{"name":"AllTime","value":true}'
-            ></astro-island>
-            <astro-island
-              uid="ZILaTR"
-              component-url="/datosdigi/_astro/GrafficTypesScores.ec3f8cb6.js"
-              component-export="default"
-              renderer-url="/datosdigi/_astro/client.27839267.js"
-              props="{}"
-              ssr=""
-              client="only"
-              opts='{"name":"GrafficTypesScores","value":true}'
-            ></astro-island>
+              client="load"
+              opts='{"name":"GridExample","value":true}'
+              await-children=""
+              ><div class="w-full h-full flex items-center justify-center">
+                <div class="ag-theme-quartz" style="width: 95%; height: 80%">
+                  <h4 class="text-white p-5 text-center">
+                    Puedes encontrar todos los turnos tomados por nuestros
+                    asociados, puedes filtrarlos por numero de cedula, sucursal,
+                    telefono entro otros.
+                  </h4>
+                  <div style="height: 100%"></div>
+                </div>
+              </div>
+              <!--astro:end--></astro-island
+            >
           </div>
         </div>
       </main>

@@ -9,17 +9,19 @@ ChartJS.register(CategoryScale, LineElement, PointElement, ArcElement, LinearSca
 
 export default function NumberTurns({ name, time }) {
 
-    const [turns, setTurns] = useState([])
+    const [turnsApi, setTurnsApi] = useState([])
     const [countDays, setCountDays] = useState([])
 
     useEffect(() => {
-        /*async function loadTurns() {
+        async function loadTurns() {
             const res = await getAllTurns()
-            setTurns(res.data)
+            setTurnsApi(res.data)
         }
         loadTurns()
-        */
-        const dates = filterDatesByNameAndMonth(name, time, TunrsDates)
+    }, [])
+
+    useEffect(() => {
+        const dates = filterDatesByNameAndMonth(name, time, turnsApi)
         setCountDays(countList(dates))
     }, [name, time])
     

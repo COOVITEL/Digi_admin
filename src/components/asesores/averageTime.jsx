@@ -5,16 +5,26 @@ import { options } from '../options';
 import { useEffect, useState } from 'react';
 import { ListAsesors } from '@/pages/api/asesors';
 import { ListColors, ListColorsWeak } from '@/pages/api/colors';
+import { getAllTurns } from '@/pages/api/turns';
 
 ChartJS.register(CategoryScale, LineElement, PointElement, ArcElement, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export default function TimesAwait({name, time}) {
     const [listTime, setlistTime] = useState([])
+    const [turns, setTurns] = useState([])
     const [title, setTitle] = useState()
-    const [listAverageTime, setListAverageTime] = useState(countsAsesors(name, listTime, ListAsesors))
+    const [listAverageTime, setListAverageTime] = useState([])
 
     useEffect(() => {
-        let dates = filterDatesByNameAndMonth(name, time);
+        async function loadTurns() {
+            const res = await getAllTurns()
+            setTurns(res.data)
+        }
+        loadTurns()
+    }, [])
+
+    useEffect(() => {
+        let dates = filterDatesByNameAndMonth(name, time, turns);
         setlistTime(dates)
         setListAverageTime(countsAsesors(name, dates, ListAsesors))
         setTitle(name === "all" ? "Todas las Sucursales" : name)
@@ -68,25 +78,25 @@ export default function TimesAwait({name, time}) {
     )
 }
 
-function filterDatesByNameAndMonth(name, time) {
+function filterDatesByNameAndMonth(name, time, list) {
     const date = new Date();
     let year = date.getFullYear();
     let newMonth = time === 0 ? date.getMonth() + 1 : date.getMonth();
-    let dates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) === newMonth);
+    let dates = list.filter((turn) => Number(turn.date.split("-")[1]) === newMonth);
  
     if (newMonth == 0) {
      year = date.getFullYear() - 1;
-     dates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) === 12 && Number(turn.date.split('-')[0]) === year);
+     dates = list.filter((turn) => Number(turn.date.split("-")[1]) === 12 && Number(turn.date.split('-')[0]) === year);
      } else {
-         dates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) === newMonth  && Number(turn.date.split('-')[0]) === year);
+         dates = list.filter((turn) => Number(turn.date.split("-")[1]) === newMonth  && Number(turn.date.split('-')[0]) === year);
      }
  
      if (time == 2) {
          newMonth = date.getMonth() - 1;
          if (newMonth < 0) {
-             dates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) >= (12 + newMonth))
+             dates = list.filter((turn) => Number(turn.date.split("-")[1]) >= (12 + newMonth))
          } else {
-             dates = TunrsDates.filter((turn) => Number(turn.date.split("-")[1]) >= newMonth)
+             dates = list.filter((turn) => Number(turn.date.split("-")[1]) >= newMonth)
          }
      }
     return name === "all" ? dates : dates.filter((turn) => turn.city === name);
@@ -137,7 +147,7 @@ function filterDatesByNameAndMonth(name, time) {
  
  function createDatasets(labels, dataAwait, dataAtten, names) { 
     let dataSets = [];
-    for (let x = 0; x < dataAtten.length; x++) {
+    for (let x = 0; x < names.length; x++) {
         dataSets.push({
             label: `Tiempo de espera ${names[x]}`,
             data: dataAwait[x],

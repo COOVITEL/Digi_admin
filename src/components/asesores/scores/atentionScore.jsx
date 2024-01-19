@@ -4,17 +4,28 @@ import { Bar } from "react-chartjs-2"
 import { optionsAsesors } from "../../options";
 import { useEffect, useState } from 'react';
 import { ListAsesors } from '@/pages/api/asesors';
+import { getAllTurns } from '@/pages/api/turns';
 
 ChartJS.register(CategoryScale, PointElement, ArcElement, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export default function AttentionScore({name, time}) {
     const asesors = ListAsesors.filter((turn) => turn.sucursal === name)
     const listAse = asesors.map((turn) => turn.name)
-    const [listDatesAsesors, setListDatesAsesors] = useState(countDates(ListAsesors, TunrsDates, name, time))
+    const [turns, setTurns] = useState([])
+
+    useEffect(() => {
+        async function loadTurns() {
+            const res = await getAllTurns()
+            setTurns(res.data)
+        }
+        loadTurns()
+    }, [])
+
+    const [listDatesAsesors, setListDatesAsesors] = useState(countDates(ListAsesors, turns, name, time))
     const [service, setService] = useState(listDatesAsesors)
 
     useEffect(() => {
-        let newListDatesAsesors = countDates(ListAsesors, TunrsDates, name, time);
+        let newListDatesAsesors = countDates(ListAsesors, turns, name, time);
         setListDatesAsesors(newListDatesAsesors);
      }, [name, time]);
      
