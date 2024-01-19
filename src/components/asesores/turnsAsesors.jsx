@@ -57,7 +57,7 @@ export default function NumberAsesors({ name, time}) {
 
     useEffect(() => {
         setAsesors(countTurns(ListAsesors, turns, name, time))
-    }, [name, time])
+    }, [name, time, turns])
 
     const types = asesors.map((ase) => ase.name)
     const counts = asesors.map((ase) => ase.turns)

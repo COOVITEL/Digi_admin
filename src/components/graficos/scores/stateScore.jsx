@@ -22,7 +22,7 @@ export default function StateScore({name, time}) {
 
     useEffect(() => {
         CountDates(turns, name, time)
-    }, [name, time]);
+    }, [name, time, turns]);
 
     function CountDates(list, name, time) {
         const date = new Date()

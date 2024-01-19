@@ -5,12 +5,17 @@ import StateScore from "./scores/stateScore";
 import TypesScores from "./scores/typesScores";
 import TypesTimes from "./averageTime/typesTime";
 import NumberTurns from "./numberTurns";
+import { getAllTurns } from "@/pages/api/turns";
 
 
 export default function Navbuttons() {
 
     const navRef = useRef(null)
     const [turns, setTurns] = useState([])
+    const sucursales = turns.map((city) => city.city)
+    const uniqueSuc = [...new Set(sucursales)]
+    const [currentName, setCurrentName] = useState("all")
+    const [currentTime, setCurrentTime] = useState(0)
 
     useEffect(() => {
         async function loadTurns() {
@@ -18,12 +23,7 @@ export default function Navbuttons() {
             setTurns(res.data)
         }
         loadTurns()
-    }, [])
-
-    const sucursales = turns.map((city) => city.city)
-    const uniqueSuc = [...new Set(sucursales)]
-    const [currentName, setCurrentName] = useState("all")
-    const [currentTime, setCurrentTime] = useState(0)
+    }, [uniqueSuc])
 
     useEffect(() => {
         let timeoutId;

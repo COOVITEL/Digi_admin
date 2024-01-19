@@ -28,7 +28,7 @@ export default function TimesAwait({name, time}) {
         setlistTime(dates)
         setListAverageTime(countsAsesors(name, dates, ListAsesors))
         setTitle(name === "all" ? "Todas las Sucursales" : name)
-    }, [name, time]);
+    }, [name, time, turns]);
     
     let names = [], timesAwait = [], timesAtten = [];
 

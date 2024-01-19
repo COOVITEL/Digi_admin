@@ -65,7 +65,7 @@ export default function ScoreOptions({name, time, typeScore, list, param}) {
         const porcentajes = types.map((type) => ((counts[type] / total) * 100).toFixed(2))
         setPorcentajes(porcentajes)
         
-    }, [name, time])
+    }, [name, time, turns])
 
     const data = {
         labels: types,

@@ -76,9 +76,9 @@ function createDatasets(labels, dataAwait, dataAttent) {
 }
 
 export default function TimesAwait({name, time}) {
-   const [listTime, setlistTime] = useState([])
-   const [title, setTitle] = useState()
-   const [turns, setTurns] = useState([])
+    const [turns, setTurns] = useState([])
+    const [listTime, setlistTime] = useState([])
+    const [title, setTitle] = useState()
 
     useEffect(() => {
         async function loadTurns() {
@@ -88,23 +88,23 @@ export default function TimesAwait({name, time}) {
         loadTurns()
     }, [])
 
-   useEffect(() => {
-       const dates = filterDatesByNameAndMonth(name, time, turns);
-       setlistTime(dates)
-       setTitle(name === "all" ? "Todas las Sucursales" : name)
-   }, [name, time]);
+    useEffect(() => {
+        const dates = filterDatesByNameAndMonth(name, time, turns);
+        setlistTime(dates)
+        setTitle(name === "all" ? "Todas las Sucursales" : name)
+    }, [name, time, turns]);
 
-   const timesAwait = calculateTimes(listTime, 'arrival_time', 'await_time');
-   const timesAtten = calculateTimes(listTime, 'await_time', 'atention_time');
+    const timesAwait = calculateTimes(listTime, 'arrival_time', 'await_time');
+    const timesAtten = calculateTimes(listTime, 'await_time', 'atention_time');
 
-   const averageTimeAwait = calculateAverage(timesAwait);
-   const averageTimeAtten = calculateAverage(timesAtten);
+    const averageTimeAwait = calculateAverage(timesAwait);
+    const averageTimeAtten = calculateAverage(timesAtten);
 
-   const labels = Object.keys(timesAwait);
-   const dataAwait = Object.values(timesAwait);
-   const dataAttent = Object.values(timesAtten);
+    const labels = Object.keys(timesAwait);
+    const dataAwait = Object.values(timesAwait);
+    const dataAttent = Object.values(timesAtten);
 
-   const datas = createDatasets(labels, dataAwait, dataAttent);
+    const datas = createDatasets(labels, dataAwait, dataAttent);
 
     return (
         <div className='flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[80%] h-auto'>

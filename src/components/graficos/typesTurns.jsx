@@ -9,24 +9,22 @@ ChartJS.register(CategoryScale, PointElement, ArcElement, LinearScale, BarElemen
 
 export default function Types({ name, time }) {
 
-    const types = ["Caja", "Crédito", "Afiliación", "Ahorro", "Seguros", "Auxilios", "Estado", "Otros", "Obsequio"]
-    const [turnsApi, setTurnsApi] = useState([])
-    const [turns, setTurns] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
-
     useEffect(() => {
         async function loadTurns() {
             const res = await getAllTurns()
             setTurnsApi(res.data)
-            setIsLoading(false)
         }
         loadTurns()
-    }, [isLoading])
+    }, [])
+
+    const types = ["Caja", "Crédito", "Afiliación", "Ahorro", "Seguros", "Auxilios", "Estado", "Otros", "Obsequio"]
+    const [turnsApi, setTurnsApi] = useState([])
+    const [turns, setTurns] = useState([])
 
     useEffect(() => {
         const dates = filterDatesByNameAndMonth(name, time, turnsApi)
         setTurns(dates)
-    }, [name, time])
+    }, [name, time, turnsApi])
     
     const counts = types.reduce((acc, type) => {
         acc[type] = turns.filter((turn) => turn.type2 === type).length

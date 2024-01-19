@@ -27,7 +27,7 @@ export default function TimeScore({name, time}) {
     useEffect(() => {
         let newListDatesAsesors = countDates(ListAsesors, turns, name, time);
         setListDatesAsesors(newListDatesAsesors);
-     }, [name, time]);
+     }, [name, time, turns]);
      
      useEffect(() => {
         let newService = Service(listDatesAsesors);

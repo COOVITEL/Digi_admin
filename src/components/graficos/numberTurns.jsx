@@ -23,7 +23,7 @@ export default function NumberTurns({ name, time }) {
     useEffect(() => {
         const dates = filterDatesByNameAndMonth(name, time, turnsApi)
         setCountDays(countList(dates))
-    }, [name, time])
+    }, [name, time, turnsApi])
     
     const labels = Object.keys(countDays)
     const data = Object.values(countDays)
