@@ -49,7 +49,7 @@ export default function AllTime() {
             </div>
             <p className='text-white w-52 text-center'>
                 Numero de turnos tomados en todas las sucursales por fecha,
-                esto nos permitira conocer que dias y que fechas son las mas visitadas por nuestros asociados.
+                esto nos permitirá conocer que días y que fechas son las más visitadas por nuestros asociados.
             </p>
         </div>
     )

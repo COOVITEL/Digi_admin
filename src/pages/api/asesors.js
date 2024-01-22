@@ -109,7 +109,7 @@ export const ListAsesors = [
     },
     {
         'cc': 1000148516,
-        'name': 'Andy Salgado',
+        'name': 'ANDY SALGADO',
         'sucursal': 'Bogotá',
         'turns': ''
     },

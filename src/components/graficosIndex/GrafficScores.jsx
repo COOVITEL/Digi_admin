@@ -51,8 +51,8 @@ export default function GrafficScores() {
     return (
         <div className='flex flex-row items-center gap-5 p-10'>
             <p className='text-white w-52 text-center'>
-                Estado de la calificación de nuestros asociados y tipo de canal de calificaión de nuestro servicio.
-                Junto con el numero de turnos calificados y el canal de su calificación.
+                Estado de la calificación de nuestros asociados y tipo de canal de calificación de nuestro servicio.
+                Junto con el número de turnos calificados y el canal de su calificación.
             </p>
             <div className="flex flex-col justify-center items-center border-2 p-10 rounded-lg w-[700px] h-[550px]">
                 <h5 className="text-white pb-3 text-sm">Estados de Calificación de Turno</h5>

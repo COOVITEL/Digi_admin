@@ -58,7 +58,7 @@ export default function TimesAwait({name, time}) {
     return (
         <div className="flex flex-col items-center w-full p-10">
             <p className="text-white text-center p-5">
-                Es muy importante conocer los tiempos de atencion brindados por cada uno de nuestros asesores.
+                Es muy importante conocer los tiempos de atención brindados por cada uno de nuestros asesores.
                 Por lo cual tenemos los tiempos promedio de espera y atención de cada uno, en cada una de nuestras sucursales.
             </p>
             <div className='flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[95%] h-auto'>

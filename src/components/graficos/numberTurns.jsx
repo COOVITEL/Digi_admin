@@ -46,8 +46,8 @@ export default function NumberTurns({ name, time }) {
                 <Line data={datas} options={options}/>
             </div>
             <p className='text-white w-52 text-center'>
-                En esta grafica podras encontrar el numero de turnos tomados por dia a nivel general o en cada una de las sucursales.
-                En la cual se podra determinar que dias y que fechas del mes presentamos mayor cantidad de visitas de nuestros asociados.
+                En esta grafica podrás encontrar el número de turnos tomados por día a nivel general o en cada una de las sucursales.
+                En la cual se podrá determinar que días y que fechas del mes presentamos mayor cantidad de visitas de nuestros asociados.
             </p>
         </div>
     )

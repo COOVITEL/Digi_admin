@@ -3,14 +3,14 @@ import ScoreOptions from "./scoreOptions";
 export default function TypesScores({ name, time }) {
     return (
         <div className="flex flex-col w-full items-center pt-5 pb-10">
-            <h2 className="text-white text-2xl">Calificaciones dadas por nuestros asosiados</h2>
+            <h2 className="text-white text-2xl">Calificaciones dadas por nuestros asociados</h2>
             <p className="text-white p-5 w-[800px] text-center">
                 Conocer el servicio brindado de nuestros asesores es de gran importancia.
-                Pero conocer la percepcion de nuestros asociados es aun mas importante.
+                Pero conocer la percepcion de nuestros asociados es aún más importante.
             </p>
             <p className="text-white p-5 w-[1000px] text-center">
-                Eso por esto que acontinuación podras encontrar la percepción del servicio, atencion,
-                tiempo de sus visitas y si nuestros asociados nos recomendarian con un amigo o conocido.
+                Eso por esto que a continuación podrás encontrar la percepción del servicio, atención,
+                tiempo de sus visitas y si nuestros asociados nos recomendarían con un amigo o conocido.
             </p>
             <div className="flex flex-wrap gap-10 m-5 justify-center items-center">
                 <ScoreOptions name={name} time={time} typeScore={"Servicio"} list={['Excelente', 'Bueno', 'Normal', 'Regular', 'Malo']} param={"score_service"} />

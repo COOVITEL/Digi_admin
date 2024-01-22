@@ -69,7 +69,7 @@ export default function TimeScore({name, time}) {
         <div className="w-full flex flex-col items-center gap-5 p-10">
             <p className='text-white font-light'>
                 Calificaciones dadas por nuestros <strong className='font-bold'>asociados</strong> en
-                base a su <strong className='font-bold'>tiempo de atencion</strong> y de espera en nuestras oficinas.
+                base a su <strong className='font-bold'>tiempo de atención</strong> y de espera en nuestras oficinas.
             </p>
             <div className="flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[95%] h-auto">
                 <h4 className='text-white font-bold'>Calificación sobre el Tiempo de Atención</h4>

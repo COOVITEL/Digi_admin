@@ -66,7 +66,7 @@ export default function GrafficTypes() {
                 <Bar data={data} options={options}/>
             </div>
             <p className='text-white w-[200px] text-center'>
-                Tipo y numero de turnos tomados en todas nuestras sucursales.
+                Tipo y número de turnos tomados en todas nuestras sucursales.
             </p>
         </div>
     )

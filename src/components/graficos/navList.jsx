@@ -86,7 +86,7 @@ export default function Navbuttons() {
                     <button className={currentTime === 2 ? "text-white text-xl" : "text-zinc-400 hover:scale-110 hover:text-white"} onClick={() => handleClick(currentName, 2)}>Ultimos 3 meses</button>
                 </ul>
             </nav>
-            <h1 className="text-white text-3xl mt-5 mb-5 border-b-[3px] p-5">Graficos y Estadisticas Sucursales</h1>
+            <h1 className="text-white text-3xl mt-5 mb-5 border-b-[3px] p-5">Gráficos y Estadísticas Sucursales</h1>
             <Types name={currentName} time={currentTime}/>
             <NumberTurns name={currentName} time={currentTime}/>
             <StateScore name={currentName} time={currentTime}/>

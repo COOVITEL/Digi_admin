@@ -51,12 +51,12 @@ export default function GrafficTypesScores() {
     return (
         <div className='flex flex-row items-center gap-5 p-10'>
             <p className='text-white w-64 text-center'>
-                La atención a nuestros asosciados es de vital importancia para nosotros,
-                acontinuacion podemos observar la calificacion de nuestro servicio brindado hacia nuestros
+                La atención a nuestros asociados es de vital importancia para nosotros,
+                a continuación podemos observar la calificación de nuestro servicio brindado hacia nuestros
                 asociados a nivel general de todas nuestras sucursales.
             </p>
             <div className="flex flex-col justify-center items-center border-2 p-10 rounded-lg w-[700px] h-[520px]">
-                <h5 className="text-white pb-3 text-sm">Calificacion Servicio Brindado</h5>
+                <h5 className="text-white pb-3 text-sm">Calificación Servicio Brindado</h5>
                 <Pie data={data} options={options}/>
             </div>
         </div>

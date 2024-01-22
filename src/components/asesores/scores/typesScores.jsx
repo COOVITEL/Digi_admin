@@ -9,7 +9,7 @@ export default function TypesScores({ name, time }) {
             <h2 className="text-white text-2xl font-bold">Calificaciones dadas por nuestros asociados</h2>
             <p className="text-white w-[800px] text-center p-10">
                 En las siguientes graficas podremos encontrar las calificaciones dadas a cada uno de nuestros asesores en cada sucursal.
-                Calificando el servicio, tiempo, solicitud atendida y si recomendarian coovitela cada un amigo o conocido.</p>
+                Calificando el servicio, tiempo, solicitud atendida y si recomendarían coovitel a cada un amigo o conocido.</p>
             <div className="flex flex-wrap gap-10 m-5 justify-center items-center">
                 <ServiceScore name={name} time={time} />
                 <TimeScore name={name} time={time}/>

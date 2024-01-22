@@ -43,7 +43,7 @@ export const GridExample = () => {
     <div className='w-full h-full flex items-center justify-center'>
       <div className={"ag-theme-quartz"} style={{ width: '95%', height: '80%' }}>
         <h4 className='text-white p-5 text-center'>
-          Puedes encontrar todos los turnos tomados por nuestros asociados, puedes filtrarlos por numero de cedula, sucursal, telefono entro otros.
+          Puedes encontrar todos los turnos tomados por nuestros asociados, puedes filtrarlos por número de cedula, sucursal, teléfono entro otros.
         </h4>
         <AgGridReact rowData={rowData} columnDefs={colDefs} defaultColDef={defaultColDef} pagination={true}/>
       </div>

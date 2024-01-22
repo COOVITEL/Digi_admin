@@ -94,8 +94,8 @@ export default function StateScore({name, time}) {
     return (
         <div className='flex flex-row w-[90%] p-10 gap-5 items-center'>
             <p className='text-white w-52 text-center'>
-                Conocer los canales de calificacion de nuestro servicio usados por nuestros asociados es de gran importancia.
-                Es por esto que en esta tabla podras encontrar los diferentes pocentajes y cantidad de turnos calificados por nuestros asociados.
+                Conocer los canales de calificación de nuestro servicio usados por nuestros asociados es de gran importancia.
+                Es por esto que en esta tabla podrás encontrar los diferentes porcentajes y cantidad de turnos calificados por nuestros asociados.
             </p>
             <div className="flex flex-col justify-center items-center border-2 p-5 mt-20 rounded-lg w-[70%]">
                 <h5 className="text-white pb-3 text-sm">Estados de Calificación de Turno en {title}</h5>

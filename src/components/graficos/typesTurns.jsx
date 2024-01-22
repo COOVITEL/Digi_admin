@@ -90,7 +90,7 @@ export default function Types({ name, time }) {
         <div className='flex flex-row w-[95%] p-10 pb-20 gap-5 items-center'>
             <p className='text-white w-52 text-center'>
                 Tipos de turnos tomados por nuestros asociados, en cada una de las sucursales.
-                Durante el mes actual, el mes pasado o durante los 3 ultimos meses.
+                Durante el mes actual, el mes pasado o durante los 3 últimos meses.
             </p>
             <div className="flex flex-col justify-center items-center border-2 p-5 mt-5 rounded-lg">
                 <Bar data={data} options={options}/>
