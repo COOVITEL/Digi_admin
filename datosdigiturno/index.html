@@ -7,11 +7,10 @@
       content="Datos Digiturno - En esta web podras encontrar los datos recopilados en las diferentes sucursales de Coovitel."
     />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/datosdigi/logoup.png" />
+    <link rel="icon" type="image/svg+xml" href="logoup.png" />
     <meta name="generator" content="Astro v3.6.0" />
-    <title>Tabla de Datos</title>
-    <link rel="stylesheet" href="/datosdigi/_astro/asesores.63b408d4.css" />
-    <link rel="stylesheet" href="/datosdigi/_astro/tables.f9892f7f.css" />
+    <title>Admin Digiturno</title>
+    <link rel="stylesheet" href="_astro/asesores.9d813783.css" />
   </head>
   <body data-astro-cid-sckkx6r4>
     <div id="app" class="relative h-screen p-2 gap-2" data-astro-cid-sckkx6r4>
@@ -24,7 +23,7 @@
             <li class="list-none hover:scale-105 py-1">
               <a
                 class="flex gap-2 text-zinc-400 hover:text-zinc-100 items-center py-3 px-5 my-5 font-medium transition duration-300"
-                href="/datosdigi"
+                href="/datosdigiturno"
               >
                 <svg
                   role="img"
@@ -44,7 +43,7 @@
             <li class="list-none hover:scale-105 py-1">
               <a
                 class="flex gap-2 text-zinc-400 hover:text-zinc-100 items-center py-3 px-5 my-5 font-medium transition duration-300"
-                href="/datosdigi/tables"
+                href="/datosdigiturno/tables"
               >
                 <svg
                   role="img"
@@ -68,7 +67,7 @@
             <li class="list-none hover:scale-105 py-1">
               <a
                 class="flex gap-2 text-zinc-400 hover:text-zinc-100 items-center py-3 px-5 my-5 font-medium transition duration-300"
-                href="/datosdigi/graffics"
+                href="/datosdigiturno/graffics"
               >
                 <svg height="22" width="22" fill="none" viewBox="0 0 18 16">
                   <path
@@ -85,7 +84,7 @@
             <li class="list-none hover:scale-105 py-1">
               <a
                 class="flex gap-2 text-zinc-400 hover:text-zinc-100 items-center py-3 px-5 my-5 font-medium transition duration-300"
-                href="/datosdigi/asesores"
+                href="/datosdigiturno/asesores"
               >
                 <svg width="30" height="30" fill="none" viewBox="0 0 18 18">
                   <path
@@ -101,7 +100,7 @@
             <li class="list-none hover:scale-105 py-1">
               <a
                 class="flex gap-2 text-zinc-400 hover:text-zinc-100 items-center py-3 px-5 my-5 font-medium transition duration-300"
-                href="/datosdigi/datos.xlsx"
+                href="/datosdigiturno/datos.xlsx"
               >
                 <svg height="27" width="27" fill="none" viewBox="0 0 20 19">
                   <path
@@ -122,13 +121,16 @@
         class="[grid-area:main] rounded-lg bg-zinc-800 overflow-y-auto w-full"
         data-astro-cid-sckkx6r4
       >
-        <div
-          class="w-full h-full flex flex-col p-5 justify-center items-center"
-        >
-          <h1 class="text-white text-3xl border-b-[3px] p-5">
-            Tablas de Datos Digiturno
+        <div class="flex flex-col p-5 items-center">
+          <h1 class="text-white text-3xl p-5 border-b-[3px]">
+            Datos y Estadisticas DigiTurno, Bienvenido!
           </h1>
-          <div class="h-full w-full flex flex-col justify-center items-center">
+          <p class="text-white p-6">
+            En esta pagina podras encontrar estadisticas, graficas y analisis de
+            los datos recolectados por <strong>Coovitel</strong> en sus
+            diferentes sucursales.
+          </p>
+          <div class="flex flex-col items-center gap-5 m-6">
             <style>
               astro-island,
               astro-slot,
@@ -143,8 +145,8 @@
                     await t()
                   )();
                 };
-                (self.Astro || (self.Astro = {})).load = e;
-                window.dispatchEvent(new Event("astro:load"));
+                (self.Astro || (self.Astro = {})).only = e;
+                window.dispatchEvent(new Event("astro:only"));
               })();
               (() => {
                 var b = Object.defineProperty;
@@ -353,28 +355,55 @@
               })();
             </script>
             <astro-island
-              uid="1uod8E"
-              prefix="r0"
-              component-url="/datosdigi/_astro/types.8eb95f35.js"
-              component-export="GridExample"
-              renderer-url="/datosdigi/_astro/client.27839267.js"
+              uid="ZePDfE"
+              component-url="/datosdigiturno/_astro/GrafficSucursales.859af602.js"
+              component-export="default"
+              renderer-url="/datosdigiturno/_astro/client.27839267.js"
               props="{}"
               ssr=""
-              client="load"
-              opts='{"name":"GridExample","value":true}'
-              await-children=""
-              ><div class="w-full h-full flex items-center justify-center">
-                <div class="ag-theme-quartz" style="width: 95%; height: 80%">
-                  <h4 class="text-white p-5 text-center">
-                    Puedes encontrar todos los turnos tomados por nuestros
-                    asociados, puedes filtrarlos por numero de cedula, sucursal,
-                    telefono entro otros.
-                  </h4>
-                  <div style="height: 100%"></div>
-                </div>
-              </div>
-              <!--astro:end--></astro-island
-            >
+              client="only"
+              opts='{"name":"Graffic","value":true}'
+            ></astro-island>
+            <astro-island
+              uid="25lFwT"
+              component-url="/datosdigiturno/_astro/GrafficTypes.fe856c32.js"
+              component-export="default"
+              renderer-url="/datosdigiturno/_astro/client.27839267.js"
+              props="{}"
+              ssr=""
+              client="only"
+              opts='{"name":"GrafficTypes","value":true}'
+            ></astro-island>
+            <astro-island
+              uid="Lbde5"
+              component-url="/datosdigiturno/_astro/GrafficScores.0ed4d3d4.js"
+              component-export="default"
+              renderer-url="/datosdigiturno/_astro/client.27839267.js"
+              props="{}"
+              ssr=""
+              client="only"
+              opts='{"name":"GrafficScores","value":true}'
+            ></astro-island>
+            <astro-island
+              uid="ZkBEE9"
+              component-url="/datosdigiturno/_astro/GrafficTime.3ea76f32.js"
+              component-export="default"
+              renderer-url="/datosdigiturno/_astro/client.27839267.js"
+              props="{}"
+              ssr=""
+              client="only"
+              opts='{"name":"AllTime","value":true}'
+            ></astro-island>
+            <astro-island
+              uid="ZILaTR"
+              component-url="/datosdigiturno/_astro/GrafficTypesScores.db4cd914.js"
+              component-export="default"
+              renderer-url="/datosdigiturno/_astro/client.27839267.js"
+              props="{}"
+              ssr=""
+              client="only"
+              opts='{"name":"GrafficTypesScores","value":true}'
+            ></astro-island>
           </div>
         </div>
       </main>

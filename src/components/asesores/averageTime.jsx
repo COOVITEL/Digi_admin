@@ -102,50 +102,64 @@ function filterDatesByNameAndMonth(name, time, list) {
     return name === "all" ? dates : dates.filter((turn) => turn.city === name);
  }
  
- function calculateAverage(times) {
+function calculateAverage(times) {
     return Object.values(times).reduce((sum, value) => sum + value, 0) / Object.values(times).length;
- }
+}
  
- 
- function calculateTimes(list, property1, property2, name) {
-     return list.reduce((acc, cur) => {
-         if (cur[property1] && cur[property2] && cur.adviser == name) {
-             let date1 = cur[property1].substring(0, 10)
-             let date2 = cur[property2].substring(0, 10)
-             if (cur.date == date1 && cur.date == date2) {
-                 let date1Obj = new Date(cur[property1])
-                 let date2Obj = new Date(cur[property2])
-                 let diff = (date2Obj.getTime() - date1Obj.getTime()) / 60000;
-                 if (acc[cur.date]) {
-                    acc[cur.date] = (acc[cur.date] + diff) / 2;
-                 } else {
-                    acc[cur.date] = diff;
-                 }
-             }
-         }
-         return acc;
-     }, {});
-  }
- 
-  function countsAsesors(name, listTime, ListAsesors) {
-     let datesTimesAsesors = [];
-     for (let asesor of ListAsesors) {
-        let datesAsesor = {
-            'name': '',
-            'await': 0,
-            'atten': 0
+function getDates(list) {
+    const listDates = list.map((lis) => lis.date)
+    return listDates
+}
+
+function calculateTimes(list, property1, property2, name) {
+    const listDates = getDates(list)
+    let result = {}
+
+    listDates.forEach(date => {
+        result[date] = 0;
+    })
+
+    list.reduce((acc, cur) => {
+        if (cur[property1] && cur[property2] && cur.adviser == name) {
+            let date1 = cur[property1].substring(0, 10)
+            let date2 = cur[property2].substring(0, 10)
+            if (cur.date == date1 && cur.date == date2) {
+                let date1Obj = new Date(cur[property1])
+                let date2Obj = new Date(cur[property2])
+                let diff = (date2Obj.getTime() - date1Obj.getTime()) / 60000;
+                if (result[cur.date]) {
+                    result[cur.date] = (result[cur.date] + diff) / 2;
+                } else {
+                    result[cur.date] = diff;
+                }
+            }
         }
-         if (asesor.sucursal === name) {
-             datesAsesor.name = asesor.name
-             datesAsesor.await = calculateTimes(listTime, 'arrival_time', 'await_time', asesor.cc)
-             datesAsesor.atten = calculateTimes(listTime, 'await_time', 'atention_time', asesor.cc)
-             datesTimesAsesors.push(datesAsesor)
-         }
-     }
-     return datesTimesAsesors;
- }
+        return acc;
+    }, {})
+
+    return result;
+}
+
  
- function createDatasets(labels, dataAwait, dataAtten, names) { 
+function countsAsesors(name, listTime, ListAsesors) {
+    let datesTimesAsesors = [];
+    for (let asesor of ListAsesors) {
+    let datesAsesor = {
+        'name': '',
+        'await': 0,
+        'atten': 0
+    }
+        if (asesor.sucursal === name) {
+            datesAsesor.name = asesor.name
+            datesAsesor.await = calculateTimes(listTime, 'arrival_time', 'await_time', asesor.cc)
+            datesAsesor.atten = calculateTimes(listTime, 'await_time', 'atention_time', asesor.cc)
+            datesTimesAsesors.push(datesAsesor)
+        }
+    }
+    return datesTimesAsesors;
+}
+ 
+function createDatasets(labels, dataAwait, dataAtten, names) { 
     let dataSets = [];
     for (let x = 0; x < names.length; x++) {
         dataSets.push({

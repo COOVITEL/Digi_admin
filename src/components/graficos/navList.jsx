@@ -90,8 +90,8 @@ export default function Navbuttons() {
             <Types name={currentName} time={currentTime}/>
             <NumberTurns name={currentName} time={currentTime}/>
             <StateScore name={currentName} time={currentTime}/>
-            <TypesScores name={currentName} time={currentTime}/>
             <TypesTimes name={currentName} time={currentTime}/>
+            <TypesScores name={currentName} time={currentTime}/>
         </div>
     )
 }

@@ -1,1 +1,0 @@
-const s={plugins:{legend:{display:!1,labels:{color:"white"}}},scales:{y:{ticks:{color:"white"}},x:{ticks:{color:"white"}}}},o={plugins:{legend:{display:!1,labels:{color:"white"}}},scales:{y:{ticks:{color:"white"}},x:{ticks:{color:"white",font:{size:10}}}}};export{o as a,s as o};

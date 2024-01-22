@@ -55,22 +55,22 @@ function calculateAverage(times) {
    return Object.values(times).reduce((sum, value) => sum + value, 0) / Object.values(times).length;
 }
 
-function createDatasets(labels, dataAwait) {
+function createDatasets(labels, dataAttent) {
    return {
        labels: labels,
        datasets: [
            {
-               data: dataAwait,
-               borderColor: 'rgb(75, 192, 192)',
-               pointBackgroundColor: 'rgba(185, 182, 25)',
+               data: dataAttent,
+               borderColor: 'rgb(238, 80, 192)',
+               pointBackgroundColor: 'rgba(75, 132, 255)',
                tension: 0.3,
-               label: 'Tiempo de Espera Promedio: '
+               label: 'Tiempo de Atención Promedio: '
            }
        ]
    };
 }
 
-export default function TimesAwait({name, time}) {
+export default function TimesAttent({name, time}) {
     const [turns, setTurns] = useState([])
     const [listTime, setlistTime] = useState([])
     const [title, setTitle] = useState()
@@ -90,21 +90,21 @@ export default function TimesAwait({name, time}) {
         console.log("test use 2")
     }, [name, time, turns]);
 
-    const timesAwait = calculateTimes(listTime, 'arrival_time', 'await_time');
+    const timesAtten = calculateTimes(listTime, 'await_time', 'atention_time');
 
-    const averageTimeAwait = calculateAverage(timesAwait);
+    const averageTimeAtten = calculateAverage(timesAtten);
 
-    const labels = Object.keys(timesAwait);
-    const dataAwait = Object.values(timesAwait);
+    const labels = Object.keys(timesAtten);
+    const dataAttent = Object.values(timesAtten);
 
-    const datas = createDatasets(labels, dataAwait);
+    const datas = createDatasets(labels, dataAttent);
 
     return (
         <div className='flex flex-col justify-center items-center border-2 p-5 rounded-lg w-[80%] h-auto'>
-            <h4 className='text-white'>Tiempo de Espera en {title}</h4>
+            <h4 className='text-white'>Tiempo de Atencion en {title}</h4>
             <Line data={datas} options={options}/> 
             <div className='flex flex-row gap-16 pt-4'>
-                <h3 className='text-[rgb(22,234,234)]'>Espera promedio:  {averageTimeAwait.toFixed(2)} Minutos</h3>
+                <h3 className='text-[rgba(248,106,213)]'>Atencion promedio:  {averageTimeAtten.toFixed(2)} Minutos</h3>
             </div>
         </div>
     )
