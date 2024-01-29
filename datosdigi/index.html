@@ -10,9 +10,120 @@
     <link rel="icon" type="image/svg+xml" href="logoup.png" />
     <meta name="generator" content="Astro v3.6.0" />
     <title>Admin Digiturno</title>
-    <link rel="stylesheet" href="_astro/asesores.9d813783.css" />
+    <link rel="stylesheet" href="_astro/asesores.1888e2f6.css" />
+    <script type="module">
+      const c = document.getElementById("app");
+      c.style.display = "none";
+      const i = document.getElementById("bl"),
+        l = "cys",
+        o = "cys2024coovitel";
+      i.addEventListener("click", () => {
+        const d = document.getElementById("app"),
+          y = document.getElementById("login"),
+          e = document.getElementById("username").value,
+          t = document.getElementById("password").value,
+          n = document.getElementById("user-empty"),
+          s = document.getElementById("user-failed");
+        e == "" && t == "" && (n.style.display = "block"),
+          e != l &&
+            t != o &&
+            e != "" &&
+            t != "" &&
+            ((n.style.display = "none"), (s.style.display = "block")),
+          e == l && t == o
+            ? ((s.style.display = "none"),
+              (n.style.display = "none"),
+              (y.style.display = "none"),
+              (d.style.display = "grid"))
+            : console.log("Error en Inicio de Sesion");
+      });
+    </script>
   </head>
   <body data-astro-cid-sckkx6r4>
+    <div
+      id="login"
+      class="h-[620px] flex flex-col justify-center items-center bg-gradient-to-t from-[#2c3870] to-black"
+      data-astro-cid-sckkx6r4
+    >
+      <img
+        src="./logoup.png"
+        alt="logo"
+        class="relative bottom-6 w-26 h-28"
+        data-astro-cid-sckkx6r4
+      />
+      <div
+        class="flex flex-col gap-5 items-center justify-center w-[450px] h-[420px] rounded-md bg-black/70 text-white"
+        data-astro-cid-sckkx6r4
+      >
+        <h1
+          class="text-white relative bottom-5 text-3xl font-serif"
+          data-astro-cid-sckkx6r4
+        >
+          Datos Digturno
+        </h1>
+        <div
+          class="flex flex-row justify-center items-center"
+          data-astro-cid-sckkx6r4
+        >
+          <label data-astro-cid-sckkx6r4>
+            <input
+              type="text"
+              placeholder="Usuario"
+              id="username"
+              required
+              class="bg-transparent border-b-2 focus:border-b-0 px-5 py-2"
+              data-astro-cid-sckkx6r4
+            />
+          </label>
+          <img
+            class="invert h-6 w-6 ml-4"
+            src="./user.png"
+            alt="user"
+            data-astro-cid-sckkx6r4
+          />
+        </div>
+        <div
+          class="flex flex-row justify-center items-center"
+          data-astro-cid-sckkx6r4
+        >
+          <label data-astro-cid-sckkx6r4>
+            <input
+              type="password"
+              placeholder="Contraseña"
+              id="password"
+              required
+              class="bg-transparent border-b-2 focus:border-b-0 px-5 py-2"
+              data-astro-cid-sckkx6r4
+            />
+          </label>
+          <img
+            class="invert h-6 w-6 ml-4"
+            src="./candado.png"
+            alt="password"
+            data-astro-cid-sckkx6r4
+          />
+        </div>
+        <span
+          class="hidden relative top-5"
+          id="user-empty"
+          data-astro-cid-sckkx6r4
+          >Ingrese Usuario y Contraseña</span
+        >
+        <span
+          class="hidden relative top-5"
+          id="user-failed"
+          data-astro-cid-sckkx6r4
+          >Usuario o la Contraseña no conciden</span
+        >
+        <button
+          id="bl"
+          class="bg-[#2c3870] relative rounded-3xl top-10 py-2 px-6 hover:bg-[#2c2060] transition duration-200 active:scale-110"
+          data-astro-cid-sckkx6r4
+        >
+          Iniciar Sesión
+        </button>
+      </div>
+    </div>
     <div id="app" class="relative h-screen p-2 gap-2" data-astro-cid-sckkx6r4>
       <aside
         class="[grid-area:aside] bg-zinc-800 rounded-lg flex-col flex overflow-y-auto"
@@ -23,7 +134,7 @@
             <li class="list-none hover:scale-105 py-1">
               <a
                 class="flex gap-2 text-zinc-400 hover:text-zinc-100 items-center py-3 px-5 my-5 font-medium transition duration-300"
-                href="/datosdigiturno"
+                href="/datosdigi"
               >
                 <svg
                   role="img"
@@ -43,7 +154,7 @@
             <li class="list-none hover:scale-105 py-1">
               <a
                 class="flex gap-2 text-zinc-400 hover:text-zinc-100 items-center py-3 px-5 my-5 font-medium transition duration-300"
-                href="/datosdigiturno/tables"
+                href="/datosdigi/tables"
               >
                 <svg
                   role="img"
@@ -67,7 +178,7 @@
             <li class="list-none hover:scale-105 py-1">
               <a
                 class="flex gap-2 text-zinc-400 hover:text-zinc-100 items-center py-3 px-5 my-5 font-medium transition duration-300"
-                href="/datosdigiturno/graffics"
+                href="/datosdigi/graffics"
               >
                 <svg height="22" width="22" fill="none" viewBox="0 0 18 16">
                   <path
@@ -84,7 +195,7 @@
             <li class="list-none hover:scale-105 py-1">
               <a
                 class="flex gap-2 text-zinc-400 hover:text-zinc-100 items-center py-3 px-5 my-5 font-medium transition duration-300"
-                href="/datosdigiturno/asesores"
+                href="/datosdigi/asesores"
               >
                 <svg width="30" height="30" fill="none" viewBox="0 0 18 18">
                   <path
@@ -100,7 +211,7 @@
             <li class="list-none hover:scale-105 py-1">
               <a
                 class="flex gap-2 text-zinc-400 hover:text-zinc-100 items-center py-3 px-5 my-5 font-medium transition duration-300"
-                href="/datosdigiturno/datos.xlsx"
+                href="/datosdigi/datos.xlsx"
               >
                 <svg height="27" width="27" fill="none" viewBox="0 0 20 19">
                   <path
@@ -123,10 +234,10 @@
       >
         <div class="flex flex-col p-5 items-center">
           <h1 class="text-white text-3xl p-5 border-b-[3px]">
-            Datos y Estadisticas DigiTurno, Bienvenido!
+            Datos y Estadísticas DigiTurno, Bienvenido!
           </h1>
           <p class="text-white p-6">
-            En esta pagina podras encontrar estadisticas, graficas y analisis de
+            En esta página podrás encontrar estadísticas, gráficas y análisis de
             los datos recolectados por <strong>Coovitel</strong> en sus
             diferentes sucursales.
           </p>
@@ -356,9 +467,9 @@
             </script>
             <astro-island
               uid="ZePDfE"
-              component-url="/datosdigiturno/_astro/GrafficSucursales.859af602.js"
+              component-url="/datosdigi/_astro/GrafficSucursales.859af602.js"
               component-export="default"
-              renderer-url="/datosdigiturno/_astro/client.27839267.js"
+              renderer-url="/datosdigi/_astro/client.27839267.js"
               props="{}"
               ssr=""
               client="only"
@@ -366,9 +477,9 @@
             ></astro-island>
             <astro-island
               uid="25lFwT"
-              component-url="/datosdigiturno/_astro/GrafficTypes.fe856c32.js"
+              component-url="/datosdigi/_astro/GrafficTypes.bc0584b3.js"
               component-export="default"
-              renderer-url="/datosdigiturno/_astro/client.27839267.js"
+              renderer-url="/datosdigi/_astro/client.27839267.js"
               props="{}"
               ssr=""
               client="only"
@@ -376,9 +487,9 @@
             ></astro-island>
             <astro-island
               uid="Lbde5"
-              component-url="/datosdigiturno/_astro/GrafficScores.0ed4d3d4.js"
+              component-url="/datosdigi/_astro/GrafficScores.0b87a34d.js"
               component-export="default"
-              renderer-url="/datosdigiturno/_astro/client.27839267.js"
+              renderer-url="/datosdigi/_astro/client.27839267.js"
               props="{}"
               ssr=""
               client="only"
@@ -386,9 +497,9 @@
             ></astro-island>
             <astro-island
               uid="ZkBEE9"
-              component-url="/datosdigiturno/_astro/GrafficTime.3ea76f32.js"
+              component-url="/datosdigi/_astro/GrafficTime.98418be9.js"
               component-export="default"
-              renderer-url="/datosdigiturno/_astro/client.27839267.js"
+              renderer-url="/datosdigi/_astro/client.27839267.js"
               props="{}"
               ssr=""
               client="only"
@@ -396,9 +507,9 @@
             ></astro-island>
             <astro-island
               uid="ZILaTR"
-              component-url="/datosdigiturno/_astro/GrafficTypesScores.db4cd914.js"
+              component-url="/datosdigi/_astro/GrafficTypesScores.c55cec51.js"
               component-export="default"
-              renderer-url="/datosdigiturno/_astro/client.27839267.js"
+              renderer-url="/datosdigi/_astro/client.27839267.js"
               props="{}"
               ssr=""
               client="only"

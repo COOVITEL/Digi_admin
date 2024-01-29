@@ -4,34 +4,41 @@ import HomeIcon from "@/icons/Home.astro"
 import Statitics from "@/icons/Statistics.astro"
 import Graffics from "@/icons/Graffics.astro"
 import Turns from "@/icons/Turns.astro"
+import Close from '@/icons/Close.astro'
 import Download from "@/icons/Download.astro"
 
 ---
-<nav class="flex flex-col flex-1 gap-2">
-    <div class="bg-zinc-800 p-4">
-        <SideMenuItem href="/datosdigiturno">
+<nav class="flex flex-col flex-1">
+    <div class="bg-zinc-800 px-4">
+        <SideMenuItem href="/">
             <HomeIcon />
              Inicio
           </SideMenuItem>
 
-          <SideMenuItem href="/datosdigiturno/tables">
+          <SideMenuItem href="/tables">
             <Statitics />
              Tablas
           </SideMenuItem>
 
-          <SideMenuItem href="/datosdigiturno/graffics">
+          <SideMenuItem href="/graffics">
             <Graffics />
              Estadisticas Sucursales
           </SideMenuItem>
 
-          <SideMenuItem href="/datosdigiturno/asesores">
+          <SideMenuItem href="/asesores">
             <Turns />
             Estadisticas Asesores
           </SideMenuItem>
 
-          <SideMenuItem href="/datosdigiturno/datos.xlsx">
+          <SideMenuItem href="/datos.xlsx">
             <Download />
             Descargar Datos
           </SideMenuItem>
+
+          <SideMenuItem href="#">
+            <Close />
+            Cerrar Sesion
+          </SideMenuItem>
+
     </div>
 </nav>
