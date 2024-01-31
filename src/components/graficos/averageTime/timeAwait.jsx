@@ -87,7 +87,6 @@ export default function TimesAwait({name, time}) {
         const dates = filterDatesByNameAndMonth(name, time, turns);
         setlistTime(dates)
         setTitle(name === "all" ? "Todas las Sucursales" : name)
-        console.log("test use 2")
     }, [name, time, turns]);
 
     const timesAwait = calculateTimes(listTime, 'arrival_time', 'await_time');

@@ -6,6 +6,7 @@ if (window.localStorage.getItem('displayApp')) {
     app.style.display = 'none'
 }
 const login = document.getElementById('login')
+
 if (window.localStorage.getItem('displayLogin')) {
     login.style.display = window.localStorage.getItem('displayLogin')
 } else {
@@ -14,9 +15,8 @@ if (window.localStorage.getItem('displayLogin')) {
 
 
 const bl = document.getElementById('bl')
-
-const USER_ENV = "cys"
-const PASSWORD_ENV = "cys2024"
+const USER_ENV = "datosdigi2024"
+const PASSWORD_ENV = "datos2024coovitel"
 
 bl.addEventListener('click', () => {
     const app = document.getElementById('app')

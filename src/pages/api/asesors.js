@@ -72,48 +72,6 @@ export const ListAsesors = [
         'turns': '',
     },
     {
-        'cc': 1030653936,
-        'name': 'TATIANA RAMIREZ',
-        'sucursal': 'Bogotá',
-        'turns': '',
-    },
-    {
-        'cc': 1032493785,
-        'name': 'LISETH PRIETO',
-        'sucursal': 'Bogotá',
-        'turns': '',
-    },
-    {
-        'cc': 1024476502,
-        'name': 'OSCAR EDUARDO PORRAS',
-        'sucursal': 'Bogotá',
-        'turns': '',
-    },
-    {
-        'cc': 1000121072,
-        'name': 'BRYAN VARGAS',  
-        'sucursal': 'Bogotá',
-        'turns': '',
-    },
-    {
-        'cc': 10239788254,
-        'name': 'KEVIN LEÓN',
-        'sucursal': 'Bogotá',
-        'turns': '',
-    },
-    {
-        'cc': 1023028357,
-        'name': 'ADRIANA CRUZ',
-        'sucursal': 'Bogotá',
-        'turns': '',
-    },
-    {
-        'cc': 1000148516,
-        'name': 'ANDY SALGADO',
-        'sucursal': 'Bogotá',
-        'turns': ''
-    },
-    {
         'cc': 1099544827,
         'name': 'YIS MORENO',
         'sucursal': 'Tunja',
@@ -132,3 +90,49 @@ export const ListAsesors = [
         'turns': '',
     },
 ]
+
+
+/*
+{
+    'cc': 1030653936,
+    'name': 'TATIANA RAMIREZ',
+    'sucursal': 'Bogotá',
+    'turns': '',
+},
+{
+    'cc': 1032493785,
+    'name': 'LISETH PRIETO',
+    'sucursal': 'Bogotá',
+    'turns': '',
+},
+{
+    'cc': 1024476502,
+    'name': 'OSCAR EDUARDO PORRAS',
+    'sucursal': 'Bogotá',
+    'turns': '',
+},
+{
+    'cc': 1000121072,
+    'name': 'BRYAN VARGAS',  
+    'sucursal': 'Bogotá',
+    'turns': '',
+},
+{
+    'cc': 10239788254,
+    'name': 'KEVIN LEÓN',
+    'sucursal': 'Bogotá',
+    'turns': '',
+},
+{
+    'cc': 1023028357,
+    'name': 'ADRIANA CRUZ',
+    'sucursal': 'Bogotá',
+    'turns': '',
+},
+{
+    'cc': 1000148516,
+    'name': 'ANDY SALGADO',
+    'sucursal': 'Bogotá',
+    'turns': ''
+},
+*/

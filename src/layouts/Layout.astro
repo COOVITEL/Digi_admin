@@ -1,5 +1,6 @@
 ---
 import AsideMenu from "../components/AsideMenu.astro"
+import Login from "../components/Login.astro"
 interface Props {
 	title: string;
 }
@@ -19,44 +20,8 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<div id="login"
-			class="h-[620px] w-full flex flex-col items-center justify-center
-			bg-gradient-to-t from-[#2c3870] to-black hidden">
-			<img src="./logoup.png" alt="logo" class="relative bottom-6 w-26 h-28">
-			<div class=" flex flex-col gap-5 items-center justify-center
-				w-[450px] h-[420px] rounded-md bg-black/70 text-white">
-				<h1 class="text-white relative bottom-5 text-3xl font-serif">Datos Digturno</h1>
-				<div class="flex flex-row justify-center items-center">
-					<label>
-						<input
-						type="text"
-						placeholder="Usuario"
-						id="username"
-						required
-						class="bg-transparent border-b-2 focus:border-b-0 px-5 py-2">
-					</label>
-					<img class="invert h-6 w-6 ml-4" src="./user.png" alt="user">
-				</div>
-				<div class="flex flex-row justify-center items-center">
-					<label>
-						<input
-						type="password"
-						placeholder="Contraseña"
-						id="password"
-						required
-						class="bg-transparent border-b-2 focus:border-b-0 px-5 py-2">
-					</label>
-					<img class="invert h-6 w-6 ml-4" src="./candado.png" alt="password">
-				</div>
-				<span class="hidden relative top-5" id="user-empty">Ingrese Usuario y Contraseña</span>
-				<span class="hidden relative top-5" id="user-failed">Usuario o la Contraseña no conciden</span>
-				<button id="bl" class="bg-[#2c3870] relative rounded-3xl top-10 py-2 px-6 hover:bg-[#2c2060] transition duration-200 active:scale-110">Iniciar Sesión</button>
-			</div>
-			<script src="./login.js"/>
-
-		</div>
-
-		<div id="app" class="relative h-screen p-2 gap-2 hidden">
+		<Login />
+		<div id="app" class="relative h-screen p-2 gap-2 [display: none]">
 			<aside class="[grid-area:aside] bg-zinc-800 rounded-lg flex-col flex overflow-y-auto">
 				<AsideMenu />
 			</aside>

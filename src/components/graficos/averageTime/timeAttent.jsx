@@ -87,7 +87,6 @@ export default function TimesAttent({name, time}) {
         const dates = filterDatesByNameAndMonth(name, time, turns);
         setlistTime(dates)
         setTitle(name === "all" ? "Todas las Sucursales" : name)
-        console.log("test use 2")
     }, [name, time, turns]);
 
     const timesAtten = calculateTimes(listTime, 'await_time', 'atention_time');

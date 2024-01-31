@@ -1,32 +1,21 @@
 ---
 interface Props {
   href?: string,
-  onClick?: () => void;
+  id?: string,
 }
 
-const { href, onClick } = Astro.props
+const { href, id } = Astro.props
 ---
 
-<li class="list-none hover:scale-105 p-1 my-10 mx-4 text-center">
+<li id={id} class="list-none hover:scale-105 p-1 my-12 mx-4 text-center">
   <a
      class="flex gap-3 text-zinc-400 hover:text-zinc-100 items-center justify-center font-medium transition duration-300"
      href={href}
-     @click={handleClick}
   >
      <slot />
   </a>
  </li>
+ <script src="./close.js"/>
 
- <script>
-  export default {
-   props: ['href', 'onClick'],
-   setup() {
-      const handleClick = () => {
-        console.log('Elemento clickeado');
-      };
-      return { handleClick };
-   }
-  }
-  </script>
   
  
